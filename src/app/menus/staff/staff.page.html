@@ -1,0 +1,111 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start" style="color: white;">
+            <ion-menu-button menu="main-menu"></ion-menu-button>
+        </ion-buttons>
+        <ion-title style="color: white;font-size: 20px;">Staff</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div *ngIf="!staffmb">
+        <ion-card *ngFor="let staf of api.staffs" class="display">
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                        <div class="av">
+                            <ion-avatar slot="start" class="avatar" style="align-content: center;">
+                                <ion-img [src]="staf.staff_img ? staf.staff_img: 'assets/avatar.png'"></ion-img>
+                            </ion-avatar>
+                        </div>
+                    </ion-col>
+                    <ion-col>
+                        <div class="name">
+                            <ion-label style="font-size: 16px; color: white;text-align: center;font-weight: 500;font-family: sans-serif;"> <b>{{staf.staffName}}</b> </ion-label>
+                                <br>
+                            <ion-label style="font-size: 14px; color:white;font-family: sans-serif;font-weight: 500;text-align: center;">{{staf.phone}} </ion-label>
+                                <br>
+                            <ion-label style="font-size: 14px; color: white;font-family: sans-serif;font-weight: 500;text-align: center;">{{staf.worktime}} </ion-label>
+                                <br>
+                        
+                        </div>
+                    </ion-col>
+                    <ion-col>
+                        <ion-badge color="warning" style="margin-left:70%">Staff</ion-badge>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <p style="font-size: 14px;justify-content: flex-start; color: white;font-family: sans-serif;font-weight: 500;">
+                            <!--<li style="margin-left:-5vh">-->
+                                {{staf.service}}
+                            <!--</li>-->
+                    </p>
+                </ion-row>
+            </ion-grid>
+        </ion-card>
+    </div>
+    
+    <div *ngIf="staffmb">
+        <div class="avatar">
+            <ion-avatar (click)="presentActionSheet()">
+                <ion-img [src]="staff.staff_img ? staff.staff_img: 'assets/avatar.png'"></ion-img>
+            </ion-avatar>
+        </div>
+
+        <div class="staffInput">
+            <ion-item lines="none">
+                <ion-input [(ngModel)]="staff.staffname" placeholder="Enter staff Name"style="font-family:sans-serif;font-size:16px" clearInput></ion-input>
+            </ion-item>
+        </div>
+
+        <div class="staffInputnumber">
+            <ion-item lines="none">
+                <ion-input (click)="Durationtime()" style="margin-left: 23px;color:medium" color="medium" [(ngModel)]="staff.worktime">
+                    {{value0}}
+                </ion-input>
+            </ion-item>
+        </div>
+
+        <div class="staff">
+            <ion-item style="padding-left:auto 5px;padding-right: 50px;">
+                <!-- <ion-label>Services</ion-label> -->
+                <ion-select Multiple="true" [(ngModel)]="staff.service" placeholder="Services" style="margin-left: 23px;">
+                    <ion-list *ngFor="let serv of api.service1list">
+                        <div *ngFor="let item of serv.services">
+                            <div *ngFor="let s of item.services">
+                            <ion-item>
+                            <ion-select-option [value]="s.service" style="color: forestgreen;">{{s.service}}</ion-select-option>
+                            <!-- <ion-label>{{s.service}}</ion-label> -->
+                        </ion-item>
+                    </div>
+                    </div>
+                    </ion-list>
+                    <ion-list *ngFor="let item of api.servicelist">
+                        <ion-item>
+                            <ion-select-option [value]="item.ServiceName" style="color: forestgreen;">{{item.ServiceName}}</ion-select-option>
+                            <ion-label style="margin-left: 23px;">{{item.ServiceName}}</ion-label>
+                        </ion-item>
+                    </ion-list>
+                </ion-select>
+            </ion-item>
+        </div>
+
+        <div class="staffInputnumber">
+            <ion-item lines="none">
+                <ion-input type="number" [(ngModel)]="staff.phone" style="font-size:14px;" placeholder="Enter phone number" clearInput>
+                <ion-icon name="call" style="color: #84878a;"></ion-icon></ion-input>
+            </ion-item>
+        </div>
+        <ion-button class="btnSubmit textBold ion-text-uppercase ion-padding-horizontal ion-padding-vertical" shape="round" expand="block" class=" align-items-center" (click)="getStaffDetails()">
+            Save
+        </ion-button>
+    </div>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="staffHideForm()">
+            <ion-icon name="add" *ngIf="!staffmb"></ion-icon>
+            <ion-icon name="close" *ngIf="staffmb"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+
+</ion-content>

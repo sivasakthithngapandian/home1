@@ -1,0 +1,105 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start" style="color: white;">
+            <ion-menu-button menu="main-menu" style="color: white;"></ion-menu-button>
+        </ion-buttons>
+        <ion-title style="color: white;">Appointment</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div *ngIf="showAddEvent" class="ion-padding">
+        <ion-item>
+            <ion-icon name="person" slot="start"></ion-icon>
+            <ion-input type="text" placeholder="Client Name" [(ngModel)]="newEvent.clientname"></ion-input>
+        </ion-item>
+        <ion-item>
+            <img src="assets/haircut.png">
+            <ion-input type="text" placeholder="Service Name"style="margin-left:40px;" [(ngModel)]="newEvent.service"></ion-input>
+        </ion-item>
+        <ion-item>
+                <ion-icon name="calendar" slot="start"></ion-icon>
+                <ion-label color="medium">Date</ion-label>
+            <ion-datetime doneText="ok" cancelText="close" i18n displayFormat="DD/MM/YYYY" pickerFormat="MMM D" [(ngModel)]="newEvent.Date" [min]="minDate"></ion-datetime>
+        </ion-item>
+        <!-- staffname -->
+        <!-- <ion-item>
+      <ion-label>Select staff</ion-label>
+      <ion-select multiple="true" [(ngModel)]="showHideForm.staff">
+        <ion-select-option value="Any staffer">Any staffer</ion-select-option>
+         <ion-list *ngFor="let item of staffnamedata">
+          <ion-select [(ngModel)]="staffnamelist.staffname">
+            <ion-select-option value="{{item.StaffName}}">{{item.StaffName}}</ion-select-option>
+          </ion-select>
+          <ion-label>{{item.StaffName}}</ion-label>
+        </ion-list> 
+      </ion-select>
+    </ion-item> -->
+
+        <ion-item>
+            <ion-icon name="time" slot="start"></ion-icon>
+            <ion-input type="text" placeholder="Enter time" [(ngModel)]="newEvent.time" (click)="open()"></ion-input>
+        </ion-item>
+        <ion-button class="btnSubmit textBold ion-text-uppercase ion-padding-horizontal ion-padding-vertical" (click)="addEvent()"><ion-icon name="add-sharp"></ion-icon>Add Event</ion-button>
+    </div>
+    <ion-calendar (click)="event()" [(ngModel)]="Date" *ngIf="!showAddEvent">
+    </ion-calendar>
+
+    <div>
+        <ion-card *ngFor="let item of today" size="50px">
+            <ion-card-content>
+                <ion-item lines="none">
+                    <ion-row>
+                        <ion-col>
+                            <ion-label style="color: forestgreen;font-size: 14px;font-family: sans-serif;" lines="none">Client Name:</ion-label>
+                        </ion-col>
+                        <ion-col>    
+                            <p style="font-family: sans-serif;font-size: 14px;">{{item.clientname}}</p>
+                        </ion-col>
+                    </ion-row>
+                </ion-item>
+                <ion-item lines="none">
+                    <ion-row>
+                        <ion-col>
+                            <ion-label style="color: forestgreen;font-family: sans-serif;font-size: 14px;" lines="none">Service:</ion-label>
+                        </ion-col>
+                        <ion-col>
+                             <p style="font-size: 14px;font-family: sans-serif;">{{item.service}}</p>
+                        </ion-col>
+                    </ion-row>
+                </ion-item>
+                <ion-item lines="none">
+                    <ion-row>
+                        <ion-col>
+                            <ion-label style="color: forestgreen;font-size: 14px;font-family: sans-serif;" lines="none">Booking Date:</ion-label>
+                        </ion-col>
+                        <ion-col>    
+                            <p style="font-family: sans-serif;font-size: 14px;">{{item.Date}}</p>
+                        </ion-col>
+                    </ion-row>
+                </ion-item>
+                <ion-item lines="none">
+                    <ion-row>
+                        <ion-col>
+                            <ion-label style="color: forestgreen;font-size: 14px;font-family: sans-serif;" lines="none">Booking Time:</ion-label>
+                        </ion-col>
+                        <ion-col>
+                            <p style="font-size: 14px;font-family: sans-serif;">{{item.time}}</p>
+                        </ion-col>
+                    </ion-row>
+                </ion-item>
+            </ion-card-content>
+        </ion-card>
+    </div>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="showHideForm()">
+            <ion-icon *ngIf="!showAddEvent" name="add"></ion-icon>
+            <ion-icon *ngIf="showAddEvent" name="close"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+    <!-- <ion-item>
+    <ion-button (click)="client()">New Appointment</ion-button>
+  </ion-item>  -->
+
+</ion-content>

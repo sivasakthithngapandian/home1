@@ -1,0 +1,45 @@
+ion-toolbar{
+    --background: forestgreen;
+}
+ion-button{
+    color:white;
+   --background:forestgreen;
+   margin-left: 25%;
+   margin-right: 25%;
+}
+.form-control{
+display: block;
+box-shadow: 0 1vh 2.5vh 0 rgba(243,247,243,0.932);
+font-family: 'Roboto Mono', monospace;
+font-weight: 400;
+border-color: rgb(72, 204, 245);
+border-style: ridge;
+border-width: 0.2vh;
+color: rgb(3,15,7);
+border-radius: 2vh;
+font-size: 14px;
+height: 40px;
+width: 100px;
+padding-left: 5px;
+}
+ion-label{
+    font-family: sans-serif;
+    //font-weight:950;
+    font-size: 20px;
+    color: rgb(78, 6, 6);
+}
+ion-fab-button {
+    --background: forestgreen;
+}
+.btn{
+    background: white;
+    color: forestgreen;
+}
+ion-card{
+    //background-image: linear-gradient(to right, #22770c, #159013, #17ca35, #4de759, #61f15e);
+    width:93%;
+    margin-top:15px;
+    border-radius:15px;
+    border-color: skyblue;
+    padding: 20px;
+}

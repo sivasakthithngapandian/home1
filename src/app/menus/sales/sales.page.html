@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu" style="color: white;"></ion-menu-button>
+  </ion-buttons>
+    <ion-title style="color: white;text-align: center;font-size: 20px;">Sales</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="staffmb" class="ion-padding">
+    <ion-label style="font-size: 20px;font-weight: 500;font-family: sans-serif;text-align: center;color: forestgreen;"> Add your product Details</ion-label>
+  <ion-item lines="none">
+    <ion-button class="btnSubmit textBold ion-text-uppercase" style="font-size: 14px;font-family: sans-serif;" (click)="addphoto()"><ion-icon name="camera"></ion-icon>Add Photo</ion-button>
+  </ion-item>
+    <ion-item lines="none">
+    <ion-input class="form-control" style="padding-left: 5px;font-size: 14px;font-family: sans-serif;font-family: 500;text-align: center;" type="text" placeholder="Enter product name" [(ngModel)]="productDetail.productname"></ion-input>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-input class="form-control" style="padding-left: 5px;font-size: 14px;font-family: sans-serif;font-family: 500;text-align: center;" type="text" placeholder="Enter product color" [(ngModel)]="productDetail.productcolor"></ion-input>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-input class="form-control" style="padding-left: 5px;font-size: 14px;font-family: sans-serif;font-family: 500;text-align: center;" type="number" placeholder="Enter product price" [(ngModel)]="productDetail.productprice"></ion-input>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-input class="form-control" style="padding-left: 5px;font-size: 14px;font-family: sans-serif;font-family: 500;text-align: center;" type="text" placeholder="Enter product model" [(ngModel)]="productDetail.productmodel"></ion-input>
+  </ion-item>
+   <ion-item class="submit" lines="none">  
+    <ion-button class="btnSubmit textBold ion-text-uppercase ion-padding-horizontal " style="color: white;border-radius: 20px;margin-left: 65px;" (click)="addProductDetail()">Submit</ion-button></ion-item>
+  </div>
+  
+    <div *ngIf="!staffmb" >
+    <ion-card *ngFor="let item of proInfo" style="border:forestgreen">
+      <ion-grid>
+        <ion-row>
+      <ion-img [src]="item.product_img"></ion-img>
+      </ion-row>
+      
+        <ion-item lines="none">
+          <ion-row>
+            <ion-col>
+              <ion-label style="font-size: 14px; color:forestgreen;font-family: sans-serif;font-weight: 500;text-align: center;">Product Name:</ion-label>
+            </ion-col>
+            <ion-col>
+              <p style="font-size: 14px;font-family: sans-serif;">{{item.productname}}</p>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+      
+      
+        <ion-item lines="none">
+          <ion-row>
+            <ion-col>
+              <ion-label style="font-size: 14px; color:forestgreen;font-family: sans-serif;font-weight: 500;text-align: center;">Product Color:</ion-label>
+            </ion-col>
+            <ion-col> 
+              <p style="font-size: 14px;font-family: sans-serif;">{{item.productcolor}}</p>
+            </ion-col>
+          </ion-row>
+      </ion-item>
+  
+      
+        <ion-item lines="none">
+          <ion-row>
+            <ion-col>
+              <ion-label style="font-size: 14px; color:forestgreen;font-family: sans-serif;font-weight: 500;text-align: center;">Product Model:</ion-label>
+            </ion-col>
+            <ion-col>
+              <p style="font-size: 14px;font-family: sans-serif;">{{item.productmodel}}</p>
+            </ion-col>
+          </ion-row>
+      </ion-item>
+    
+      <ion-item lines="none">
+        <ion-row>
+          <ion-col>
+            <ion-label style="font-size: 14px; color:forestgreen;font-family: sans-serif;font-weight: 500;text-align: center;">Product Price:</ion-label>
+          </ion-col>
+          <ion-col>
+            <p style="font-size: 14px;font-family: sans-serif;">{{item.productprice}}</p>
+          </ion-col>
+        </ion-row>
+        </ion-item>  
+      </ion-grid>
+    </ion-card>
+  </div>
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button (click)="showHideForm()">
+      <ion-icon *ngIf="!staffmb" name="add"></ion-icon>
+      <ion-icon *ngIf="staffmb" name="close"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+</ion-content>
