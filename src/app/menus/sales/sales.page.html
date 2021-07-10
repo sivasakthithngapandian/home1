@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <div *ngIf="staffmb" class="ion-padding">
+  <div *ngIf="promb" class="ion-padding">
     <ion-label style="font-size: 20px;font-weight: 500;font-family: sans-serif;text-align: center;color: forestgreen;"> Add your product Details</ion-label>
   <ion-item lines="none">
     <ion-button class="btnSubmit textBold ion-text-uppercase" style="font-size: 14px;font-family: sans-serif;" (click)="addphoto()"><ion-icon name="camera"></ion-icon>Add Photo</ion-button>
@@ -29,7 +29,7 @@
     <ion-button class="btnSubmit textBold ion-text-uppercase ion-padding-horizontal " style="color: white;border-radius: 20px;margin-left: 65px;" (click)="addProductDetail()">Submit</ion-button></ion-item>
   </div>
   
-    <div *ngIf="!staffmb" >
+    <div *ngIf="!promb" >
     <ion-card *ngFor="let item of proInfo" style="border:forestgreen">
       <ion-grid>
         <ion-row>
@@ -87,8 +87,8 @@
 
 <ion-fab vertical="bottom" horizontal="end" slot="fixed">
   <ion-fab-button (click)="showHideForm()">
-      <ion-icon *ngIf="!staffmb" name="add"></ion-icon>
-      <ion-icon *ngIf="staffmb" name="close"></ion-icon>
+      <ion-icon *ngIf="!promb" name="add"></ion-icon>
+      <ion-icon *ngIf="promb" name="close"></ion-icon>
   </ion-fab-button>
 </ion-fab>
 

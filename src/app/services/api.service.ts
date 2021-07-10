@@ -121,6 +121,9 @@ export class ApiService {
   getaddstaff(id): Observable<any>{
     return this.firestore.getdatacopy('users',id,'staff')
   }  //addserv
+  getaddBooking(id): Observable<any>{
+    return this.firestore.getdatacopy('users',id,'staff')
+  }  //addserv
   getaddproduct(id):Observable<any>{
     return this.firestore.getdatacopy('users',id,'Product')
   }
@@ -133,7 +136,15 @@ export class ApiService {
  updatedservice(id,data): Observable<any>{
     return from (this.firestore.updateSubcollection('users','service',id,data.id, data));
   }
-
+  updateBooking(id,data):Observable<any>{
+    return from (this.firestore.updateBooking('users','staff',id,data.staffid,data));
+  }
+  removeService(id,data): Observable<any>{
+    return from (this.firestore.removeField('users','service',id, data.id,data));
+  }
+  removeCategoryServices(id,data): Observable<any>{
+    return from (this.firestore.removeInnerId('users',id,'services',data,'categories'))
+  }
 
 
   addObject(id, obj: Observable<any>){

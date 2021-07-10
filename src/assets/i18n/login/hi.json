@@ -1,0 +1,88 @@
+{
+    "LOGIN":
+    {
+        "SELECT_LANG":"भाषा",
+        "SEND_OTP": "OTP भेजें",
+        "ENTER_PHONE_NUMBER":"फोन नंबर दर्ज",
+        "ENTER_OTP":"ओटीपी दर्ज करें",
+        "VERIFY_OTP":"ओटीपी सत्यापित करें",
+        "I_AGREE_WITH":"मैं सहमत हूं",
+        "TERMS_AND_CONDITIONS":"नियम और शर्तें"
+    },
+    "REG":
+    {
+        "WEL":"आपने सफलतापूर्वक लॉग इन किया है।",
+        "NEXT":"अगला",
+        "REGISTER":"पंजीकरण",
+        "SHOP_NAME":"कृपया अपनी दुकान का नाम जोड़ें",
+        "ISHOP_NAME":"दुकान का नाम दर्ज करें",
+        "PREV":"पहले का",
+        "NAME":"कृपया अपना नाम जोड़ें",
+        "INAME":"अपना नाम दर्ज करें",
+        "PHONE":"कृपया अपना मोबाइल नंबर जोड़ें",
+        "PRIMARY":"प्राथमिक संख्या :",
+        "ISPRIMARY":"माध्यमिक संख्या (वैकल्पिक)",
+        "ICPRIMARY":"कस्टम नंबर (वैकल्पिक)",
+        "EMAIL":"कृपया अपनी ईमेल आईडी जोड़ें",
+        "IEMAIL":"ईमेल दर्ज करें",
+        "FB":"कृपया अपना सार्वजनिक प्रोफ़ाइल लिंक जोड़ें (facebook / instagram)",
+        "IFB":"facebook लिंक दर्ज करें",
+        "IINSTA":"Instagram लिंक दर्ज करें",
+        "ADDRESS":"कृपया दुकान का पता खोजें",
+        "IADDRESS":"पता खोजें",
+        "ADDRE":"पता",
+        "YADDRESS":"तुम्हारा पता",
+        "CITY":"शहर",
+        "PINCODE":"ज़िप कोड",
+        "CONTIN":"जारी रखें",
+        "CCATEGORY":"श्रेणियाँ चुनें",
+        "SERVICE":"सेवाएं",
+        "PRICE":"कीमत",
+        "DURATION":"अवधि (मिनट)",
+        "SAVE":"बचा ले",
+        "OPENNING":"खुलने का समय",
+        "MONDAY":"सोमवार",
+        "CLOSED":"बंद किया हुआ",
+        "TUESDAY":"मंगलवार",
+        "WEDNESDAY":"बुधवार",
+        "THURSDAY":"गुरूवार",
+        "FRIDAY":"शुक्रवार",
+        "SATURDAY":"शनिवार",
+        "SUNDAY":"रविवार",
+        "PHOTO":"कृपया अपनी दुकान की तस्वीरें जोड़ें",
+        "APHOTO":"फ़ोटो जोड़ें"
+    },
+    "APPOINT":{
+        "APPOINT":"नियुक्ति",
+        "INCLIENT":"माध्यमिक ग्राहक नाम",
+        "TIME":"समय",
+        "ADDRE":"कार्यक्रम जोड़ें",
+        "DATE":"तारीख",
+        "SERVICES":"सेवाएं"
+    },
+    "MENU":
+    {
+        "SALES":"बिक्री",
+        "CAT":"श्रेणियाँ",
+        "SET":"समायोजन",
+        "LOG":"लॉग आउट"
+    },
+    "SET":{
+        "PROFILE":"प्रोफ़ाइल",
+        "HELP":"ह मदद",
+        "WORK":"Work Place",
+        "PHOTO":"Photos",
+        "LANG":"LAnguage Settings",
+        "PRIVACY":"Privacy & Policy",
+        "FAQ":"FAQ"
+    },
+    "CATEGORY":"வகை",
+    "SERVICES":[
+     { "SERVICE":"बाल काटना", "PRICE":"70","TIME":"20"},
+     { "SERVICE":"बालो का रंग", "PRICE":"60","TIME":"10"},
+     { "SERVICE":"बाल शैली", "PRICE":"50","TIME":"15"},
+     { "SERVICE":"बालों की बनावट", "PRICE":"100","TIME":"35"},
+     { "SERVICE":"बाल विस्तार","PRICE":"350","TIME":"50"}]
+
+
+}

@@ -23,7 +23,7 @@ public productDetail = {
   allDetail:any=[];
   product:any=[];
   proInfo:any = [];
-  staffmb = false;
+  promb = false;
   constructor(private camera: Camera,
               private api : ApiService,
               private firestore: FirestoreService,
@@ -50,7 +50,7 @@ public productDetail = {
 
   }
   showHideForm() {
-  this.staffmb = !this.staffmb;
+  this.promb = !this.promb;
     
  }
   addphoto() {
@@ -119,7 +119,7 @@ this.prodid = await this.userProvideserv.openCameraProduct();
   this.api.updateProduct(selectedProduct.id, selectedProduct).subscribe((response) => {
     console.log('response', response)
   });
-    this.staffmb=false;
+    this.promb=false;
     this.api.getaddproduct(this.userProvideserv.loggedUser.id).subscribe(use=>{
       console.log('product detail',use);
        this.api.productdata=use;

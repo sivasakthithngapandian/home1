@@ -1,7 +1,7 @@
 import { NgModule, NO_ERRORS_SCHEMA, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { ApiService } from '../app/services/api.service';
 import { FirestoreService } from './services/firestore.service';
@@ -23,7 +23,14 @@ import { AgmCoreModule } from '@agm/core'
 import { AngularFireFunctionsModule } from '@angular/fire/functions'
 import { GoogleMapsAPIWrapper } from '@agm/core'
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { LoginPage } from 'src/app/login/login.page';
 
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/login/', '.json');
+}
 
 @NgModule({
   declarations: [AppComponent],
@@ -36,6 +43,14 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
     AmazingTimePickerModule,
     AngularFireFunctionsModule,
     AngularFireAuthModule,
+    TranslateModule.forRoot({
+      loader:{
+        provide:TranslateLoader,
+        useFactory:HttpLoaderFactory,
+        deps:[HttpClient]
+      },
+      isolate:true,
+    }),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCBgMGdnSjRXTjH9FQX7qoqVEUpq3ZaDfw',
     }),

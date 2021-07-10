@@ -6,11 +6,11 @@
                     <div class="img">
                         <img src="assets/wel.png" alt="saloon-logo">
                     </div>
-                    <p class="suc">You've logged in successfully.</p>
+                    <p class="suc">{{ 'REG.WEL' | translate }}</p>
                 </ion-card>
             </ion-content>
             <ion-footer class="ion-no-border">
-                <ion-button type="button" fill="clear" (click)="slides.slideNext()">Next
+                <ion-button type="button" fill="clear" (click)="slides.slideNext()">{{ 'REG.NEXT' | translate}}
                     <ion-icon name="chevron-forward"></ion-icon>
                 </ion-button>
             </ion-footer>
@@ -20,15 +20,15 @@
         <ion-slide>
             <ion-content>
                 <ion-card class="register">
-                    <label class="register">Registration</label>
+                    <label class="register">{{ 'REG.REGISTER' | translate }}</label>
                         <div>
-                            <ion-label class="greenColor headSize" position="floating">Please add your Shop Name</ion-label>
+                            <ion-label class="greenColor headSize" position="floating">{{ 'REG.SHOP_NAME' | translate}}</ion-label>
                         </div>
                         <div class="img2">
                             <img src="assets/business.png" alt="business-logo">
                         </div>
                         <div class="BName">
-                            <ion-input class="form-control" placeholder="Enter Shop Name" [(ngModel)]="user.businessname" type="text" maxlength="25">
+                            <ion-input class="form-control" placeholder="{{ 'REG.ISHOP_NAME' | translate}}" [(ngModel)]="user.businessname" type="text" maxlength="25">
                             </ion-input>
                         </div>
                 </ion-card>
@@ -36,8 +36,8 @@
             <ion-footer class="ion-no-border">
                 <div class="next">
                     <ion-button fill="clear" slot="start" (click)="slides.slidePrev()">
-                        <ion-icon name="chevron-back"></ion-icon>Prev</ion-button>
-                            <ion-button fill="clear" [disabled]="user.businessname.length === 0" (click)="slides.slideNext()">Next
+                        <ion-icon name="chevron-back"></ion-icon>{{ 'REG.PREV' | translate}}</ion-button>
+                            <ion-button fill="clear" [disabled]="user.businessname.length === 0" (click)="slides.slideNext()">{{ 'REG.NEXT' | translate}}
                                 <ion-icon name="chevron-forward"></ion-icon>
                             </ion-button>
                 </div>
@@ -48,21 +48,21 @@
         <ion-slide style="width: 310;">
             <ion-content>
                 <ion-card class="register">
-                    <ion-label position="floating" class="greenColor headSize">Please add your Name</ion-label>
+                    <ion-label position="floating" class="greenColor headSize">{{ 'REG.NAME' | translate }}</ion-label>
                         <div class="img2">
                             <img src="assets/profile.png" alt="profile-logo">
                         </div>
                         <div class="BName">
-                            <ion-input position="floating" class="form-control" style="width: 45vh;" placeholder="Enter your Name" [(ngModel)]="user.name" type="text"></ion-input>
+                            <ion-input position="floating" class="form-control" style="width: 45vh;" placeholder="{{ 'REG.INAME' | translate }}" [(ngModel)]="user.name" type="text"></ion-input>
                         </div>
                 </ion-card>
             </ion-content>
             <ion-footer class="ion-no-border">
                 <div class="next">
                     <ion-button fill="clear" (click)="slides.slidePrev()">
-                        <ion-icon name="chevron-back"></ion-icon>Prev
+                        <ion-icon name="chevron-back"></ion-icon>{{ 'REG.PREV' | translate}}
                     </ion-button>
-                    <ion-button fill="clear" [disabled]="user.name.length === 0" (click)="slides.slideNext()">Next
+                    <ion-button fill="clear" [disabled]="user.name.length === 0" (click)="slides.slideNext()">{{ 'REG.NEXT' | translate}}
                         <ion-icon name="chevron-forward"></ion-icon>
                     </ion-button>
                 </div>
@@ -74,22 +74,22 @@
         <ion-content>
             <ion-card class="register">
                     <ion-label position="floating"  class="greenColor headSize">
-                        Please add your Mobile Numbers
+                       {{ 'REG.PHONE' | translate}}
                     </ion-label>
         
                     <div class="img2">
                         <img src="assets/calling.png" alt="calling-logo">
                     </div>
                     <div >
-                        <ion-label class="num"><ion-icon name="call" slot="start"></ion-icon>primary number : {{mobilenu.mobile}}</ion-label>
+                        <ion-label class="num"><ion-icon name="call" slot="start"></ion-icon>{{ 'REG.PRIMARY' | translate }} {{mobilenu.mobile}}</ion-label>
                     </div> 
 
                     <div class="BName">
-                        <ion-input class="form-control" placeholder="secondary Number(Optional)" type="text" [(ngModel)]="user.phone">
+                        <ion-input class="form-control" placeholder="{{ 'REG.ISPRIMARY' | translate}}" type="text" [(ngModel)]="user.phone">
                         </ion-input>
                     </div>
                     <div class="BName">
-                        <ion-input class="form-control" placeholder="custom Number(Optional)" type="text" [(ngModel)]="user.phone2">
+                        <ion-input class="form-control" placeholder="{{ 'REG.ICPRIMARY' | translate }}" type="text" [(ngModel)]="user.phone2">
                         </ion-input>
                     </div>
             </ion-card>
@@ -97,9 +97,9 @@
         <ion-footer class="ion-no-border">
             <div class="next">
                 <ion-button fill="clear" (click)="slides.slidePrev()" slot="start">
-                    <ion-icon name="chevron-back"></ion-icon>prev
+                    <ion-icon name="chevron-back"></ion-icon>{{ 'REG.PREV' | translate}}
                 </ion-button>
-                <ion-button fill="clear" (click)="phoneStorage(slides)" slot="end">Next
+                <ion-button fill="clear" (click)="phoneStorage(slides)" slot="end">{{ 'REG.NEXT' | translate}}
                     <ion-icon name="chevron-forward"></ion-icon>
                 </ion-button>
             </div>
@@ -111,27 +111,885 @@
           <ion-content>
                 <ion-card class="register">
                     <ion-label position="floating" class="greenColor headSize">
-                        Please add your Email id
+                      {{ 'REG.EMAIL' | translate }}
                     </ion-label>
                     <div class="img2">
                         <img src="assets/emailid.png" alt="emailid-logo">
                     </div>
                     <div class="BName">
-                        <ion-input class="form-control inputText" style="width: 45vh;" placeholder="Enter Email" [(ngModel)]="user.Email" type="text"></ion-input>
+                        <ion-input class="form-control inputText" style="width: 45vh;" placeholder="{{ 'REG.IEMAIL' | translate }}" [(ngModel)]="user.Email" type="text"></ion-input>
                     </div>
               </ion-card>
             </ion-content>
             <ion-footer class="ion-no-border">
                 <div class="">
                     <ion-button fill="clear" (click)="slides.slidePrev()">
-                        <ion-icon name="chevron-back"></ion-icon>prev
+                        <ion-icon name="chevron-back"></ion-icon>{{ 'REG.PREV' | translate}}
                     </ion-button>
-                    <ion-button fill="clear" (click)="nxtEmail(slides)">Next
+                    <ion-button fill="clear" (click)="nxtEmail(slides)">{{ 'REG.NEXT' | translate}}
                         <ion-icon name="chevron-forward"></ion-icon>
                     </ion-button>
                 </div>
             </ion-footer>
-        </ion-slide>
+        </ion-slide><ion-content class="">
+            <ion-slides pager="true" #slides [options]="slideOpts" background="#fff">
+                <ion-slide>
+                    <ion-content>
+                        <ion-card  class="register">
+                            <div class="img">
+                                <img src="assets/wel.png" alt="saloon-logo">
+                            </div>
+                            <p class="suc">You've logged in successfully.</p>
+                        </ion-card>
+                    </ion-content>
+                    <ion-footer class="ion-no-border">
+                        <ion-button type="button" fill="clear" (click)="slides.slideNext()">Next
+                            <ion-icon name="chevron-forward"></ion-icon>
+                        </ion-button>
+                    </ion-footer>
+                </ion-slide>
+        
+        
+                <ion-slide>
+                    <ion-content>
+                        <ion-card class="register">
+                            <label class="register">Registration</label>
+                                <div>
+                                    <ion-label class="greenColor headSize" position="floating">Please add your Shop Name</ion-label>
+                                </div>
+                                <div class="img2">
+                                    <img src="assets/business.png" alt="business-logo">
+                                </div>
+                                <div class="BName">
+                                    <ion-input class="form-control" placeholder="Enter Shop Name" [(ngModel)]="user.businessname" type="text" maxlength="25">
+                                    </ion-input>
+                                </div>
+                        </ion-card>
+                    </ion-content>
+                    <ion-footer class="ion-no-border">
+                        <div class="next">
+                            <ion-button fill="clear" slot="start" (click)="slides.slidePrev()">
+                                <ion-icon name="chevron-back"></ion-icon>Prev</ion-button>
+                                    <ion-button fill="clear" [disabled]="user.businessname.length === 0" (click)="slides.slideNext()">Next
+                                        <ion-icon name="chevron-forward"></ion-icon>
+                                    </ion-button>
+                        </div>
+                    </ion-footer>
+                </ion-slide>
+        
+        
+                <ion-slide style="width: 310;">
+                    <ion-content>
+                        <ion-card class="register">
+                            <ion-label position="floating" class="greenColor headSize">Please add your Name</ion-label>
+                                <div class="img2">
+                                    <img src="assets/profile.png" alt="profile-logo">
+                                </div>
+                                <div class="BName">
+                                    <ion-input position="floating" class="form-control" style="width: 45vh;" placeholder="Enter your Name" [(ngModel)]="user.name" type="text"></ion-input>
+                                </div>
+                        </ion-card>
+                    </ion-content>
+                    <ion-footer class="ion-no-border">
+                        <div class="next">
+                            <ion-button fill="clear" (click)="slides.slidePrev()">
+                                <ion-icon name="chevron-back"></ion-icon>Prev
+                            </ion-button>
+                            <ion-button fill="clear" [disabled]="user.name.length === 0" (click)="slides.slideNext()">Next
+                                <ion-icon name="chevron-forward"></ion-icon>
+                            </ion-button>
+                        </div>
+                    </ion-footer>
+                </ion-slide>
+        <!--Mobile no-->
+                
+               <ion-slide>
+                <ion-content>
+                    <ion-card class="register">
+                            <ion-label position="floating"  class="greenColor headSize">
+                                Please add your Mobile Numbers
+                            </ion-label>
+                
+                            <div class="img2">
+                                <img src="assets/calling.png" alt="calling-logo">
+                            </div>
+                            <div >
+                                <ion-label class="num"><ion-icon name="call" slot="start"></ion-icon>primary number : {{mobilenu.mobile}}</ion-label>
+                            </div> 
+        
+                            <div class="BName">
+                                <ion-input class="form-control" placeholder="secondary Number(Optional)" type="text" [(ngModel)]="user.phone">
+                                </ion-input>
+                            </div>
+                            <div class="BName">
+                                <ion-input class="form-control" placeholder="custom Number(Optional)" type="text" [(ngModel)]="user.phone2">
+                                </ion-input>
+                            </div>
+                    </ion-card>
+                </ion-content>
+                <ion-footer class="ion-no-border">
+                    <div class="next">
+                        <ion-button fill="clear" (click)="slides.slidePrev()" slot="start">
+                            <ion-icon name="chevron-back"></ion-icon>prev
+                        </ion-button>
+                        <ion-button fill="clear" (click)="phoneStorage(slides)" slot="end">Next
+                            <ion-icon name="chevron-forward"></ion-icon>
+                        </ion-button>
+                    </div>
+                 </ion-footer>
+            </ion-slide>
+            <!--email id-->
+        
+                <ion-slide>
+                  <ion-content>
+                        <ion-card class="register">
+                            <ion-label position="floating" class="greenColor headSize">
+                                Please add your Email id
+                            </ion-label>
+                            <div class="img2">
+                                <img src="assets/emailid.png" alt="emailid-logo">
+                            </div>
+                            <div class="BName">
+                                <ion-input class="form-control inputText" style="width: 45vh;" placeholder="Enter Email" [(ngModel)]="user.Email" type="text"></ion-input>
+                            </div>
+                      </ion-card>
+                    </ion-content>
+                    <ion-footer class="ion-no-border">
+                        <div class="">
+                            <ion-button fill="clear" (click)="slides.slidePrev()">
+                                <ion-icon name="chevron-back"></ion-icon>prev
+                            </ion-button>
+                            <ion-button fill="clear" (click)="nxtEmail(slides)">Next
+                                <ion-icon name="chevron-forward"></ion-icon>
+                            </ion-button>
+                        </div>
+                    </ion-footer>
+                </ion-slide>
+        
+            <!--fb link-->
+                <ion-slide>
+                 <ion-content>
+                     <ion-card class="register">
+                     <ion-card class="register">
+                        <ion-label position="floating" class="greenColor headSize">
+                            Please add your Public Profile Link(facebook/instagram)
+                        </ion-label>
+                        <div class="img2">
+                            <img src="assets/socialmedia.png" alt="socialmedia-logo">
+                        </div>
+                        <div class="BName">
+                            <ion-input class="form-control" placeholder="Enter facebook link" type="text">
+                            </ion-input>
+                        </div>
+                        <div class="BName">
+                            <ion-input class="form-control" placeholder="Enter instagram link" type="text">
+                            </ion-input>
+                        </div>
+                    </ion-card>
+                    </ion-card>
+                    </ion-content>
+                    <ion-footer class="ion-no-border">
+                        <div class="next">
+                        <ion-button fill="clear" (click)="slides.slidePrev()">
+                            <ion-icon name="chevron-back"></ion-icon>Prev
+                        </ion-button>
+                        <ion-button fill="clear" (click)="slides.slideNext()">Next
+                            <ion-icon name="chevron-forward"></ion-icon>
+                        </ion-button>
+                    </div>
+                </ion-footer>
+                </ion-slide>
+        
+                <!--Address Content-->
+                <ion-slide>
+                    <ion-content [fullscreen]="true">
+                        <ion-card class="cardAddress">
+                            <ion-grid class="">
+                                <ion-row class="ion-padding-bottom">
+                                    <ion-col size="12">
+                                        <ion-label class="greenColor headSize">Please search shop address</ion-label>
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row>
+                                    <ion-col size="12">
+                                        <ion-searchbar placeholder="Search Address" class="input" inputmode="search" showCancelButton="never" [(ngModel)]="searchTerm" (ionInput)="searchPlace()" (ionCancel)="reset()" selected="true" autofocus>
+                                        </ion-searchbar>
+                                    </ion-col>
+                                </ion-row>
+                                <ion-label class="" *ngIf="autoCompleteItems.length === 0">
+                                    <ion-img src="assets/Search.png"></ion-img>
+                                </ion-label>
+                                <ion-card *ngIf="autoCompleteItems && autoCompleteItems.length">
+                                    <ion-list style="box-shadow: 0 0vh 6vh #bdbdbd!important;">
+                                        <ion-item *ngFor="let item of autoCompleteItems" class="item-requset-ride" tappable (click)="itemSelected(item, slides)">
+                                            <ion-icon name="location" slot="start"></ion-icon>
+                                            <ion-label>
+                                                <p>{{item}}</p>
+                                            </ion-label>
+                                        </ion-item>
+                                    </ion-list>
+                                </ion-card>
+                            </ion-grid>
+                        </ion-card>
+                    </ion-content>
+                    <ion-footer class="ion-no-border">
+                        <div class="next">                
+                            <ion-button fill="none" [color]="'#228B22'" (click)="slides.slidePrev()" class="textBold ion-text-uppercase">
+                            <ion-icon name="chevron-back"></ion-icon>Prev
+                        </ion-button>
+                        <ion-button class="btnSubmit textBold" (click)="slides.slideNext()">
+                            <ion-icon name="add-sharp"></ion-icon> Address
+                        </ion-button>
+                    </div>
+                    </ion-footer>
+                </ion-slide>
+        
+                <ion-slide>
+                    <ion-content [fullscreen]="true">
+                        <ion-card class="cardAddress">
+                            <ion-grid>
+                                <ion-row class="">
+                                    <ion-col size="12">
+                                        <ion-label class="green1">Your Address</ion-label>
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row class="ion-padding-bottom">
+                                    <ion-col size="12">
+                                        <ion-item lines="none">
+                                            <ion-label position="stacked" class="green">Address</ion-label>
+                                            <ion-textarea class="typeText" rows="3" cols="5" [(ngModel)]="api.address">
+                                            </ion-textarea>
+                                        </ion-item>
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row>
+                                    <ion-col size="12">
+                                        <ion-item lines="none">
+                                            <ion-label position="stacked" class="green">City</ion-label>
+                                            <ion-input type="text" class="typeText" [(ngModel)]="api.city"></ion-input>
+                                        </ion-item>
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row>
+                                    <ion-col size="12">
+                                        <ion-item lines="none">
+                                            <ion-label position="stacked" class="green">Zipcode</ion-label>
+                                            <ion-input type="text" class="typeText" [(ngModel)]="api.zipcode"></ion-input>
+                                        </ion-item>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-grid>
+                        </ion-card>
+                    </ion-content>
+                    <ion-footer class="ion-no-border">
+        
+                        <ion-button fill="none" [color]="'#228B22'" (click)="slides.slidePrev()" class="textBold ion-text-uppercase">
+                            <ion-icon name="chevron-back"></ion-icon>Prev
+                        </ion-button>
+                        <ion-button class="btnSubmit textBold ion-text-uppercase" (click)="editedAddress(slides)">
+                            Continue
+                        </ion-button>
+                    </ion-footer>
+                </ion-slide>
+        
+                <ion-slide>
+                    <ion-content [fullscreen]="true">
+                        <ion-card class="cardAddress">
+                            <ion-grid>
+                                <ion-row class="ion-padding-bottom">
+                                    <ion-col size="12">
+                                        <ion-label class="green">Your Address</ion-label>
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row class="ion-padding-bottom">
+                                    <ion-col size="12">
+                                        <agm-map [latitude]="api.latitude" [longitude]="api.longitude" [zoom]="zoom" [disableDefaultUI]="disableDefaultUI" [zoomControl]="zoomControl" [fullscreenControl]="fullscreenControl" [styles]="styles">
+                                            <agm-marker [latitude]="api.latitude" [longitude]="api.longitude"></agm-marker>
+                                        </agm-map>
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row>
+                                    <ion-col size="12">
+                                        <ion-item lines="none">
+                                            <ion-text color="medium"><span class="locTitle">Address: </span> {{api.address}}
+                                            </ion-text>
+                                        </ion-item>
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row>
+                                    <ion-col size="12">
+                                        <ion-item lines="none">
+                                            <ion-label><span class="locTitle">City: </span></ion-label>
+                                            <ion-text color="medium">{{api.city}}</ion-text>
+                                        </ion-item>
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row>
+                                    <ion-col size="12">
+                                        <ion-item lines="none">
+                                            <ion-label><span class="locTitle">Zipcode: </span></ion-label>
+                                            <ion-text color="medium">{{api.zipcode}}</ion-text>
+                                        </ion-item>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-grid>
+                        </ion-card>
+                    </ion-content>
+                    <ion-footer class="ion-no-border">
+                        <ion-button fill="none" [color]="'#228B22'" (click)="slides.slidePrev()" class="textBold ion-text-uppercase">
+                            <ion-icon name="chevron-back"></ion-icon>Prev
+                        </ion-button>
+                        <ion-button class="btnSubmit textBold ion-text-uppercase" (click)="nxtCategory(slides)">
+                            Continue
+                        </ion-button>
+                    </ion-footer>
+                </ion-slide>
+        <!--categories-->
+                <ion-slide>
+                    <ion-card class="cardAddress">
+                        <ion-grid>
+                            <ion-row class="ion-padding-bottom">
+                                <ion-col size="12">
+                                    <ion-label class="green">Choose Categories</ion-label>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-card>
+                    <ion-content>
+                        <ion-card class="cardAddress ion-padding">
+                            <ion-list lines="none">
+                                <ion-item *ngFor="let item of category">
+                                    <ion-label class="cat">{{item.category}}</ion-label>
+                                    <ion-checkbox slot="end" [value]="item.category" (ionChange)="checkBoxEvnt($event)">
+                                    </ion-checkbox>
+                                </ion-item>
+                            </ion-list>
+                        </ion-card>
+                    </ion-content>
+                    <ion-footer class="ion-padding ion-no-border">
+                        <ion-button class="btnSubmit textBold ion-text-uppercase ion-padding-horizontal" (click)="nxtService(slides)">
+                            Next
+                        </ion-button>
+                    </ion-footer>
+                </ion-slide>
+        
+                <ion-slide>
+                    <ion-card class="cardAddress">
+                        <ion-grid>
+                            <ion-row class="ion-padding-bottom">
+                                <ion-col size="12">
+                                    <ion-label class="green">Services</ion-label>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-card>
+                    <ion-content>
+                        <ion-card class="cardAddress">
+                            <div *ngFor="let item of api.services">
+                                <ion-card-title class="ion-padding">
+                                    <p class="cat1">{{ item.category }}</p>
+                                </ion-card-title>
+                                <ion-grid class="" *ngFor="let a of item.services">
+                                    <ion-row class="">
+                                        <ion-col size="12">
+                                            <ion-label class="ser"><b>{{a.service}}:</b></ion-label>
+                                        </ion-col>
+                                    </ion-row>
+                                    <ion-row>  
+                                        <ion-col size="12">
+                                            <ion-item>
+                                                <ion-label color="primary">Price( &#8377; ):</ion-label>
+                                                <ion-input type="text" [value]="a.price" [(ngModel)]="a.price"></ion-input>
+                                            </ion-item>
+                                        </ion-col>
+                                    </ion-row>
+                                    <ion-row>
+                                        <ion-col size="12">
+                                            <ion-item>
+                                                <ion-label color="primary">Duration( mins ):</ion-label>
+                                                <ion-input type="text" [value]="a.time" [(ngModel)]="a.time"></ion-input>
+                                            </ion-item>
+                                        </ion-col>
+                                    </ion-row>
+                                </ion-grid>
+                            </div>
+                        </ion-card>
+                    </ion-content>
+                    <ion-footer class="ion-no-border">
+                        <ion-button fill="none" [color]="'#228B22'" (click)="savePrevService(slides)" class="textBold ion-text-uppercase">
+                            <ion-icon name="chevron-back"></ion-icon>Prev
+                        </ion-button>
+                        <ion-button class="btnSubmit textBold ion-text-uppercase" (click)="saveService(slides)">
+                            Save
+                        </ion-button>
+                    </ion-footer>
+        
+                </ion-slide>
+        
+                <ion-slide>
+                    <ion-content>
+                       <ion-card class="cardAddress">
+                           <ion-grid>
+                               <ion-row class="ion-padding-bottom">
+                                   <ion-col size="12">
+                                       <ion-label position="floating" class="green">
+                                           Openning Hours
+                                       </ion-label>
+                                   </ion-col>
+                               </ion-row>
+                           </ion-grid> 
+                       </ion-card><ion-card class="cardAddress">
+                        <ion-grid>
+                            <ion-row class="ion-padding-bottom">
+                                <ion-col size="12">     
+                                    <div class="img4">
+                                        <img src="assets/time1.png" alt="time-logo">
+                                    </div>
+                                </ion-col>
+                            </ion-row>    
+                        </ion-grid>
+                    </ion-card>    
+        
+                        <ion-row>
+                            <ion-item lines="none" class="d-flex align-items-center justify-content-center">
+                                <ion-label style="font-size: 12px;font-weight: 600;">Monday</ion-label>
+                                <ion-checkbox value="Monday" checked="false" (ionChange)="onSelecteCheckBox($event)" slot="start">
+                                </ion-checkbox>
+                            </ion-item>
+                        
+                                <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 20px;">
+                                    <ion-input *ngIf="checked" size="4" class="form-control" (click)="Mondaytime()" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                                        {{value2}}
+                                    </ion-input>
+                                </div>
+        
+                                <div *ngIf="!checked" class="d-flex align-items-center">
+                                    <ion-label style="font-size: 12px;font-weight: 600; padding-left: 2px;">Closed</ion-label>
+                                </div>
+                            <ion-col col-6></ion-col>
+                                
+                                <div class="addbutton d-flex align-items-center flex-column justify-content-center">
+                                    <ion-icon *ngIf="time" name="add-outline" (click)="TimeHideForm()"></ion-icon>
+                                    <ion-icon *ngIf="!time" name="add-outline" (click)="TimeHideForm1()"></ion-icon>
+                                </div>
+                            </ion-row>
+        
+                        <ion-row>
+                            <ion-col col-6></ion-col>
+                           <ion-col col-6>
+                               <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 20px;">
+                                  <ion-input *ngIf="!time" size="4" class="form-control" (click)="Mondaytime1('monEve')" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                                      {{value7}} 
+                                  </ion-input>
+                              </div> 
+                           </ion-col> 
+                           <ion-col col-6>
+                                <div (click)="TimeHideForm()">
+                                  <ion-icon name="close-outline" *ngIf="!time"></ion-icon>
+                                </div>
+                            </ion-col> 
+                       </ion-row>
+        
+                       <ion-row>
+                        <ion-col col-6></ion-col>
+                       <ion-col col-6>
+                           <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 20px;">
+                              <ion-input *ngIf="!timemon" size="4" class="form-control" (click)="Mondaytime1('monNight')" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                                  {{value8}} 
+                              </ion-input>
+                          </div> 
+                       </ion-col> 
+                       <ion-col col-6>
+                        <div (click)="TimeHideForm1mon()">
+                        <ion-icon name="close-outline" *ngIf="!timemon"></ion-icon>
+                        </div>
+                       </ion-col>
+                   </ion-row>
+                       <!-- monday -->
+        
+                        <ion-row>
+                            <ion-item lines="none" class="d-flex align-items-center justify-content-center">
+                                <ion-label style="font-size: 12px;font-weight: 600;">Tusday</ion-label>
+                                <ion-checkbox checked="false" value="Tuesday" (ionChange)="onSelectTusday($event)" color="primary" slot="start">
+                                </ion-checkbox>
+                            </ion-item>
+        
+                                <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 23px;">
+                                    <ion-input *ngIf="checked1" size="4" class="form-control" (click)="Tusdaytime()" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                                        {{value3}}
+                                    </ion-input>
+                                    </div>
+        
+                            <div *ngIf="!checked1" class="d-flex align-items-center">
+                                <ion-label style="font-size: 12px;font-weight: 600;padding-left: 2px;">Closed</ion-label>
+                            </div>
+        
+                            <div class="addbutton d-flex align-items-center flex-column justify-content-center">
+                                <ion-icon *ngIf="time1" name="add-outline" (click)="TimeHideForm2()"></ion-icon>
+                                <ion-icon *ngIf="!time1" name="add-outline" (click)="TimeHideForm3()"></ion-icon>
+                            </div>
+                        </ion-row>
+        
+                        <ion-row>
+                            <ion-col col-6></ion-col>
+                           <ion-col col-6>
+                               <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 20px;">
+                                  <ion-input *ngIf="!time1" size="4" class="form-control" (click)="Mondaytime1('tusEve')" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                                      {{value9}} 
+                                  </ion-input>
+                              </div> 
+                           </ion-col> 
+                           <ion-col col-6>
+                                <div (click)="TimeHideForm2()">
+                                  <ion-icon name="close-outline" *ngIf="!time1"></ion-icon>
+                                </div>
+                            </ion-col> 
+                       </ion-row>
+                       <ion-row>
+                        <ion-col col-6></ion-col>
+                       <ion-col col-6>
+                           <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 20px;">
+                              <ion-input *ngIf="!timeTus" size="4" class="form-control" (click)="Mondaytime1('tusNight')" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                                  {{value10}} 
+                              </ion-input>
+                           </div> 
+                       </ion-col> 
+                       <ion-col col-6>
+                        <div (click)="TimeHideForm3tus()">
+                        <ion-icon name="close-outline" *ngIf="!timeTus"></ion-icon>
+                        </div>
+                       </ion-col>
+                   </ion-row>
+                   <!-- tuesday -->
+        
+                        <ion-row>
+                            <ion-item lines="none" class="d-flex align-items-center">
+                                <ion-label style="font-size: 12px;font-weight: 600;">Wednesday</ion-label>
+                                <ion-checkbox checked="false" (ionChange)="onSelecteCheckBoxwed($event)" value="Wednesday" color="primary" slot="start">
+                                </ion-checkbox>
+                            </ion-item>
+        
+                                <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 1px;">
+        
+                                    <ion-input *ngIf="checked2" size="4" class="form-control" (click)="wednesdaytime()" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                                        {{value1}}
+                                    </ion-input>
+                                </div>
+        
+                            <div *ngIf="!checked2" class="d-flex align-items-center">
+                                <ion-label style="font-size: 12px;font-weight: 600;">Closed</ion-label>
+                            </div>
+        
+                            <div class="addbutton d-flex align-items-center flex-column justify-content-center">
+                                <ion-icon *ngIf="time2" name="add-outline" (click)="TimeHideForm4()"></ion-icon>
+                                <ion-icon *ngIf="!time2" name="add-outline" (click)="TimeHideForm5()"></ion-icon>
+                            </div>
+                        </ion-row>
+        
+                        <ion-row>
+                            <ion-col col-6></ion-col>
+                           <ion-col col-6>
+                               <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 20px;">
+                                  <ion-input *ngIf="!time2" size="4" class="form-control" (click)="Mondaytime1('wedEve')" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                                      {{value11}} 
+                                  </ion-input>
+                              </div> 
+                           </ion-col> 
+                           <ion-col col-6>
+                                <div (click)="TimeHideForm4()">
+                                  <ion-icon name="close-outline" *ngIf="!time2"></ion-icon>
+                                </div>
+                            </ion-col> 
+                       </ion-row>
+                       <ion-row>
+                        <ion-col col-6></ion-col>
+                       <ion-col col-6>
+                           <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 20px;">
+                              <ion-input *ngIf="!timeWed" size="4" class="form-control" (click)="Mondaytime1('wedNight')" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                                  {{value12}} 
+                              </ion-input>
+                          </div> 
+                       </ion-col> 
+                       <ion-col col-6>
+                        <div (click)="TimeHideForm5wed()">
+                        <ion-icon name="close-outline" *ngIf="!timeWed"></ion-icon>
+                        </div>
+                       </ion-col>
+                   </ion-row>
+                   <!-- wednesday -->
+        
+                        <ion-row>
+                            <ion-item lines="none" class="d-flex align-items-center">
+                                <ion-label style="font-size: 12px;font-weight: 600;">Thursday</ion-label>
+                                <ion-checkbox checked="false" (ionChange)="onSelecteCheckBoxthurs($event)" slot="start"></ion-checkbox>
+                            </ion-item>
+        
+                                <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 11px;">
+                                    <ion-input *ngIf="checked3" size="4" class="form-control" (click)="thursdaytime()" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                                        {{value0}}
+                                    </ion-input>
+                                </div>
+                    
+                            <div *ngIf="!checked3" class="d-flex align-items-center">
+                                <ion-label style="font-size: 12px;font-weight: 600; padding-left: 2px;">Closed</ion-label>
+                            </div>
+        
+                            <div class="addbutton d-flex align-items-center flex-column justify-content-center">
+                                <ion-icon *ngIf="time3" name="add-outline" (click)="TimeHideForm6()"></ion-icon>
+                                <ion-icon *ngIf="!time3" name="add-outline" (click)="TimeHideForm7()"></ion-icon>
+                            </div>
+                        </ion-row>
+        
+                    <ion-row>
+                        <ion-col col-6></ion-col>
+                       <ion-col col-6>
+                           <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 20px;">
+                              <ion-input *ngIf="!time3" size="4" class="form-control" (click)="Mondaytime1('thurEve')" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                                  {{value13}} 
+                              </ion-input>
+                          </div> 
+                       </ion-col> 
+                       <ion-col col-6>
+                            <div (click)="TimeHideForm6()">
+                              <ion-icon name="close-outline" *ngIf="!time3"></ion-icon>
+                            </div>
+                        </ion-col> 
+                   </ion-row>
+                   <ion-row>
+                    <ion-col col-6></ion-col>
+                   <ion-col col-6>
+                       <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 20px;">
+                          <ion-input *ngIf="!timeThus" size="4" class="form-control" (click)="Mondaytime1('thurNight')" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                              {{value14}} 
+                          </ion-input>
+                      </div> 
+                   </ion-col> 
+                   <ion-col col-6>
+                    <div (click)="TimeHideForm7thurs()">
+                    <ion-icon name="close-outline" *ngIf="!timeThus"></ion-icon>
+                    </div>
+                   </ion-col>
+               </ion-row>
+        <!-- thursday -->
+                        <ion-row>
+                            <ion-item lines="none" class="d-flex align-items-center">
+                                <ion-label style="font-size: 12px;font-weight: 600;">Friday</ion-label>
+                                <ion-checkbox checked="false" (ionChange)="onSelecteCheckBoxfri($event)" color="primary" slot="start">
+                                </ion-checkbox>
+                            </ion-item>
+        
+                                <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 26px;">
+                                    <ion-input *ngIf="checked4" size="4" class="form-control" (click)="Fridaytime()" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                                        {{value4}}
+                                    </ion-input>
+                                 
+                                </div>
+                    
+                            <div *ngIf="!checked4" class="d-flex align-items-center">
+                                <ion-label style="font-size: 12px;font-weight: 600; padding-left: 2px;">Closed</ion-label>
+                            </div>
+                            <div class="addbutton d-flex align-items-center flex-column justify-content-center">
+                                <ion-icon *ngIf="time4" name="add-outline" (click)="TimeHideForm8()"></ion-icon>
+                                <ion-icon *ngIf="!time4" name="add-outline" (click)="TimeHideForm9()"></ion-icon>
+                            </div>
+                        </ion-row>
+        
+                        <ion-row>
+                            <ion-col col-6></ion-col>
+                           <ion-col col-6>
+                               <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 20px;">
+                                  <ion-input *ngIf="!time4" size="4" class="form-control" (click)="Mondaytime1('friEve')" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                                      {{value15}} 
+                                  </ion-input>
+                              </div> 
+                           </ion-col> 
+                           <ion-col col-6>
+                                <div (click)="TimeHideForm8()">
+                                  <ion-icon name="close-outline" *ngIf="!time4"></ion-icon>
+                                </div>
+                            </ion-col> 
+                       </ion-row>
+                       <ion-row>
+                        <ion-col col-6></ion-col>
+                       <ion-col col-6>
+                           <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 20px;">
+                              <ion-input *ngIf="!timeFri" size="4" class="form-control" (click)="Mondaytime1('friNight')" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                                  {{value16}} 
+                              </ion-input>
+                          </div> 
+                       </ion-col> 
+                       <ion-col col-6>
+                        <div (click)="TimeHideForm9fri()">
+                        <ion-icon name="close-outline" *ngIf="!timeFri"></ion-icon>
+                        </div>
+                       </ion-col>
+                   </ion-row>
+          <!-- friday -->
+                        <ion-row>
+                            <ion-item lines="none" class="d-flex align-items-center">
+                                <ion-label style="font-size: 12px;font-weight: 600;">Saturday</ion-label>
+                                <ion-checkbox checked="false" (ionChange)="onSelecteCheckBoxsat($event)" color="primary" slot="start">
+                                </ion-checkbox>
+                            </ion-item>
+        
+                                <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 11px;">
+                                    <ion-input *ngIf="checked5" size="4" class="form-control" (click)="saturdaytime()" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                                        {{value5}}
+                                    </ion-input>
+                                   
+                                    </div>
+                            <div *ngIf="!checked5" class="d-flex align-items-center">
+                                <ion-label style="font-size: 12px;font-weight: 600; padding-left: 2px;">Closed</ion-label>
+                            </div>
+        
+                            <div class="addbutton d-flex align-items-center flex-column justify-content-center">
+                                <ion-icon *ngIf="time5" name="add-outline" (click)="TimeHideForm10()"></ion-icon>
+                                <ion-icon *ngIf="!time5" name="add-outline" (click)="TimeHideForm11()"></ion-icon>
+                            </div>
+                        </ion-row>
+        
+                        <ion-row>
+                            <ion-col col-6></ion-col>
+                           <ion-col col-6>
+                               <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 20px;">
+                                  <ion-input *ngIf="!time5" size="4" class="form-control" (click)="Mondaytime1('satEve')" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                                      {{value17}} 
+                                  </ion-input>
+                              </div> 
+                           </ion-col> 
+                           <ion-col col-6>
+                                <div (click)="TimeHideForm10()">
+                                  <ion-icon name="close-outline" *ngIf="!time5"></ion-icon>
+                                </div>
+                            </ion-col> 
+                       </ion-row>
+                       <ion-row>
+                        <ion-col col-6></ion-col>
+                       <ion-col col-6>
+                           <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 20px;">
+                              <ion-input *ngIf="!timeSat" size="4" class="form-control" (click)="Mondaytime1('satNight')" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                                  {{value18}} 
+                              </ion-input>
+                          </div> 
+                       </ion-col> 
+                       <ion-col col-6>
+                        <div (click)="TimeHideForm11sat()">
+                        <ion-icon name="close-outline" *ngIf="!timeSat"></ion-icon>
+                        </div>
+                       </ion-col>
+                   </ion-row>
+                   <!-- saturday -->
+        
+                        <ion-row>
+                            <ion-item lines="none" class="d-flex align-items-center">
+                                <ion-label style="font-size: 12px;font-weight: 600;">Sunday</ion-label>
+                                <ion-checkbox checked="false" (ionChange)="onSelecteCheckBoxsun($event)" color="primary" slot="start">
+                                </ion-checkbox>
+                            </ion-item>
+        
+                                <div class="d-flex justify-content-between align-items-center"  style="padding-right: 2px; padding-left: 17px;">
+                                    <ion-input *ngIf="checked6" size="4" class="form-control" (click)="sundaytime()" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                                        {{value6}}
+                                    </ion-input>
+                                   
+                                </div>
+                            <div *ngIf="!checked6" class="d-flex align-items-center">
+                                <ion-label style="font-size: 12px;font-weight: 600;padding-left: 1px;">Closed</ion-label>
+                            </div>
+        
+                            <div class="addbutton d-flex align-items-center flex-column justify-content-center">
+                                <ion-icon *ngIf="time6" name="add-outline" (click)="TimeHideForm12()"></ion-icon>
+                                <ion-icon *ngIf="!time6" name="add-outline" (click)="TimeHideForm13()"></ion-icon>
+                            </div>
+                        </ion-row>
+        
+                        <ion-row>
+                            <ion-col col-6></ion-col>
+                           <ion-col col-6>
+                               <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 20px;">
+                                  <ion-input *ngIf="!time6" size="4" class="form-control" (click)="Mondaytime1('sunEve')" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                                      {{value19}} 
+                                  </ion-input>
+                              </div> 
+                           </ion-col> 
+                           <ion-col col-6>
+                                <div (click)="TimeHideForm12()">
+                                  <ion-icon name="close-outline" *ngIf="!time6"></ion-icon>
+                                </div>
+                            </ion-col> 
+                       </ion-row>
+                       <ion-row>
+                        <ion-col col-6></ion-col>
+                       <ion-col col-6>
+                           <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 20px;">
+                              <ion-input *ngIf="!timeSun" size="4" class="form-control" (click)="Mondaytime1('sunNight')" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                                  {{value20}} 
+                              </ion-input>
+                          </div> 
+                       </ion-col> 
+                       <ion-col col-6>
+                        <div (click)="TimeHideForm13sun()">
+                        <ion-icon name="close-outline" *ngIf="!timeSun"></ion-icon>
+                        </div>
+                       </ion-col>
+                   </ion-row>
+                   <!-- sunday -->
+        
+                    </ion-content>
+                    <ion-footer class="ion-no-border">
+                        <div class=" next">
+                        <ion-button class="btnSubmit textBold ion-text-uppercase ion-padding-horizontal" (click)="savehours(slides)">Next
+                        </ion-button>
+                    </div> 
+                </ion-footer>
+                </ion-slide>
+        
+                <ion-slide>
+                    <ion-content>
+                        <ion-card class="register">
+                            <ion-label position="floating" class="greenColor"> Please add your Shop Photos</ion-label>
+        
+                    <div class="">
+                        <img src="assets/Add_Photo.png" alt="socialmedia-logo" (click)="addPhoto()">
+                        <ion-button class="btnSubmit textBold ion-text-uppercase ion-padding-horizontal" (click)="addPhoto()">
+                            Add Photo
+                        </ion-button>
+                    </div>
+                    <ion-img *ngIf="api.img_load" [src]="userProvide.loggedUser.profile_img"></ion-img>
+                    </ion-card>
+                    </ion-content>
+        
+                    <ion-footer class="ion-no-border">
+                    <div class="next">
+                        <ion-button fill="clear" (click)="slides.slidePrev()">
+                            <ion-icon name="chevron-back"></ion-icon>Prev
+                        </ion-button>
+                        <ion-button fill="clear" (click)="slides.slideNext()">Next
+                            <ion-icon name="chevron-forward"></ion-icon>
+                        </ion-button>
+                    </div>
+                </ion-footer>
+                </ion-slide>
+        
+                <ion-slide>
+                    <ion-content>
+                        <ion-card class="signin2" style="box-shadow: none;">
+                            <ion-card style="box-shadow: none;">
+                            <img src="assets/signin 2.png" alt="saloo2-logo">
+                            </ion-card>
+                        </ion-card>
+                    </ion-content>
+                    <ion-footer class="ion-no-border">
+                        <ion-button fill="clear" type="button" class="ion-padding-horizontal" (click)="slides.slidePrev()">
+                            <ion-icon name="chevron-back"></ion-icon>Prev
+                        </ion-button>
+                        <ion-button class="btnSubmit textBold" type="button" (click)="register()">
+                        Save
+                        </ion-button>
+                    </ion-footer>
+                </ion-slide>
+            </ion-slides>
+        </ion-content>
 
     <!--fb link-->
         <ion-slide>
@@ -139,17 +997,17 @@
              <ion-card class="register">
              <ion-card class="register">
                 <ion-label position="floating" class="greenColor headSize">
-                    Please add your Public Profile Link(facebook/instagram)
+                   {{ 'REG.FB' | translate }}
                 </ion-label>
                 <div class="img2">
                     <img src="assets/socialmedia.png" alt="socialmedia-logo">
                 </div>
                 <div class="BName">
-                    <ion-input class="form-control" placeholder="Enter facebook link" type="text">
+                    <ion-input class="form-control" placeholder="{{ 'REG.IFB' | translate }}" type="text">
                     </ion-input>
                 </div>
                 <div class="BName">
-                    <ion-input class="form-control" placeholder="Enter instagram link" type="text">
+                    <ion-input class="form-control" placeholder="{{ 'REG.IINSTA' | translate}}" type="text">
                     </ion-input>
                 </div>
             </ion-card>
@@ -158,9 +1016,9 @@
             <ion-footer class="ion-no-border">
                 <div class="next">
                 <ion-button fill="clear" (click)="slides.slidePrev()">
-                    <ion-icon name="chevron-back"></ion-icon>Prev
+                    <ion-icon name="chevron-back"></ion-icon>{{ 'REG.PREV' | translate}}
                 </ion-button>
-                <ion-button fill="clear" (click)="slides.slideNext()">Next
+                <ion-button fill="clear" (click)="slides.slideNext()">{{ 'REG.NEXT' | translate}}
                     <ion-icon name="chevron-forward"></ion-icon>
                 </ion-button>
             </div>
@@ -174,12 +1032,12 @@
                     <ion-grid class="">
                         <ion-row class="ion-padding-bottom">
                             <ion-col size="12">
-                                <ion-label class="greenColor headSize">Please search shop address</ion-label>
+                                <ion-label class="greenColor headSize">{{ 'REG.ADDRESS' | translate }}</ion-label>
                             </ion-col>
                         </ion-row>
                         <ion-row>
                             <ion-col size="12">
-                                <ion-searchbar placeholder="Search Address" class="input" inputmode="search" showCancelButton="never" [(ngModel)]="searchTerm" (ionInput)="searchPlace()" (ionCancel)="reset()" selected="true" autofocus>
+                                <ion-searchbar placeholder="{{ 'REG.ADDRESS' | translate}}" class="input" inputmode="search" showCancelButton="never" [(ngModel)]="searchTerm" (ionInput)="searchPlace()" (ionCancel)="reset()" selected="true" autofocus>
                                 </ion-searchbar>
                             </ion-col>
                         </ion-row>
@@ -202,10 +1060,10 @@
             <ion-footer class="ion-no-border">
                 <div class="next">                
                     <ion-button fill="none" [color]="'#228B22'" (click)="slides.slidePrev()" class="textBold ion-text-uppercase">
-                    <ion-icon name="chevron-back"></ion-icon>Prev
+                    <ion-icon name="chevron-back"></ion-icon>{{ 'REG.PREV' | translate }}
                 </ion-button>
                 <ion-button class="btnSubmit textBold" (click)="slides.slideNext()">
-                    <ion-icon name="add-sharp"></ion-icon> Address
+                    <ion-icon name="add-sharp"></ion-icon> {{ 'REG.ADDRE' | translate }}
                 </ion-button>
             </div>
             </ion-footer>
@@ -217,13 +1075,13 @@
                     <ion-grid>
                         <ion-row class="">
                             <ion-col size="12">
-                                <ion-label class="green1">Your Address</ion-label>
+                                <ion-label class="green1">{{ 'REG.YADDRESS' | translate}}</ion-label>
                             </ion-col>
                         </ion-row>
                         <ion-row class="ion-padding-bottom">
                             <ion-col size="12">
                                 <ion-item lines="none">
-                                    <ion-label position="stacked" class="green">Address</ion-label>
+                                    <ion-label position="stacked" class="green">{{ 'REG.ADDRE' | translate}}</ion-label>
                                     <ion-textarea class="typeText" rows="3" cols="5" [(ngModel)]="api.address">
                                     </ion-textarea>
                                 </ion-item>
@@ -232,7 +1090,7 @@
                         <ion-row>
                             <ion-col size="12">
                                 <ion-item lines="none">
-                                    <ion-label position="stacked" class="green">City</ion-label>
+                                    <ion-label position="stacked" class="green">{{ 'REG.CITY' | translate}}</ion-label>
                                     <ion-input type="text" class="typeText" [(ngModel)]="api.city"></ion-input>
                                 </ion-item>
                             </ion-col>
@@ -240,7 +1098,7 @@
                         <ion-row>
                             <ion-col size="12">
                                 <ion-item lines="none">
-                                    <ion-label position="stacked" class="green">Zipcode</ion-label>
+                                    <ion-label position="stacked" class="green">{{ 'REG.PINCODE' | translate}}</ion-label>
                                     <ion-input type="text" class="typeText" [(ngModel)]="api.zipcode"></ion-input>
                                 </ion-item>
                             </ion-col>
@@ -251,10 +1109,10 @@
             <ion-footer class="ion-no-border">
 
                 <ion-button fill="none" [color]="'#228B22'" (click)="slides.slidePrev()" class="textBold ion-text-uppercase">
-                    <ion-icon name="chevron-back"></ion-icon>Prev
+                    <ion-icon name="chevron-back"></ion-icon>{{ 'REG.PREV' | translate}}
                 </ion-button>
                 <ion-button class="btnSubmit textBold ion-text-uppercase" (click)="editedAddress(slides)">
-                    Continue
+                    {{ 'REG.CONTIN' | translate}}
                 </ion-button>
             </ion-footer>
         </ion-slide>
@@ -265,7 +1123,7 @@
                     <ion-grid>
                         <ion-row class="ion-padding-bottom">
                             <ion-col size="12">
-                                <ion-label class="green">Your Address</ion-label>
+                                <ion-label class="green">{{ 'REG.YADDRESS' | translate}}</ion-label>
                             </ion-col>
                         </ion-row>
                         <ion-row class="ion-padding-bottom">
@@ -278,7 +1136,7 @@
                         <ion-row>
                             <ion-col size="12">
                                 <ion-item lines="none">
-                                    <ion-text color="medium"><span class="locTitle">Address: </span> {{api.address}}
+                                    <ion-text color="medium"><span class="locTitle">{{ 'REG.ADDRESS' | translate}} </span> {{api.address}}
                                     </ion-text>
                                 </ion-item>
                             </ion-col>
@@ -286,7 +1144,7 @@
                         <ion-row>
                             <ion-col size="12">
                                 <ion-item lines="none">
-                                    <ion-label><span class="locTitle">City: </span></ion-label>
+                                    <ion-label><span class="locTitle">{{ 'REG.CITY' | translate}} </span></ion-label>
                                     <ion-text color="medium">{{api.city}}</ion-text>
                                 </ion-item>
                             </ion-col>
@@ -294,7 +1152,7 @@
                         <ion-row>
                             <ion-col size="12">
                                 <ion-item lines="none">
-                                    <ion-label><span class="locTitle">Zipcode: </span></ion-label>
+                                    <ion-label><span class="locTitle">{{ 'PINCODE' | translate}} </span></ion-label>
                                     <ion-text color="medium">{{api.zipcode}}</ion-text>
                                 </ion-item>
                             </ion-col>
@@ -304,10 +1162,10 @@
             </ion-content>
             <ion-footer class="ion-no-border">
                 <ion-button fill="none" [color]="'#228B22'" (click)="slides.slidePrev()" class="textBold ion-text-uppercase">
-                    <ion-icon name="chevron-back"></ion-icon>Prev
+                    <ion-icon name="chevron-back"></ion-icon>{{ 'REG.PREV' | translate}}
                 </ion-button>
                 <ion-button class="btnSubmit textBold ion-text-uppercase" (click)="nxtCategory(slides)">
-                    Continue
+                   {{ 'REG.CONTIN' | translate}}
                 </ion-button>
             </ion-footer>
         </ion-slide>
@@ -317,7 +1175,7 @@
                 <ion-grid>
                     <ion-row class="ion-padding-bottom">
                         <ion-col size="12">
-                            <ion-label class="green">Choose Categories</ion-label>
+                            <ion-label class="green">{{ 'REG.CCATEGORY' | translate}}</ion-label>
                         </ion-col>
                     </ion-row>
                 </ion-grid>
@@ -335,7 +1193,7 @@
             </ion-content>
             <ion-footer class="ion-padding ion-no-border">
                 <ion-button class="btnSubmit textBold ion-text-uppercase ion-padding-horizontal" (click)="nxtService(slides)">
-                    Next
+               {{ 'REG.NEXT' | translate}}
                 </ion-button>
             </ion-footer>
         </ion-slide>
@@ -345,7 +1203,7 @@
                 <ion-grid>
                     <ion-row class="ion-padding-bottom">
                         <ion-col size="12">
-                            <ion-label class="green">Services</ion-label>
+                            <ion-label class="green">{{ 'REG.SERVICE' | translate}}</ion-label>
                         </ion-col>
                     </ion-row>
                 </ion-grid>
@@ -365,7 +1223,7 @@
                             <ion-row>  
                                 <ion-col size="12">
                                     <ion-item>
-                                        <ion-label color="primary">Price( &#8377; ):</ion-label>
+                                        <ion-label color="primary">{{ 'REG.PRICE' | translate }}( &#8377; ):</ion-label>
                                         <ion-input type="text" [value]="a.price" [(ngModel)]="a.price"></ion-input>
                                     </ion-item>
                                 </ion-col>
@@ -373,7 +1231,7 @@
                             <ion-row>
                                 <ion-col size="12">
                                     <ion-item>
-                                        <ion-label color="primary">Duration( mins ):</ion-label>
+                                        <ion-label color="primary">{{ 'REG.DURATION' | translate}}:</ion-label>
                                         <ion-input type="text" [value]="a.time" [(ngModel)]="a.time"></ion-input>
                                     </ion-item>
                                 </ion-col>
@@ -384,10 +1242,10 @@
             </ion-content>
             <ion-footer class="ion-no-border">
                 <ion-button fill="none" [color]="'#228B22'" (click)="savePrevService(slides)" class="textBold ion-text-uppercase">
-                    <ion-icon name="chevron-back"></ion-icon>Prev
+                    <ion-icon name="chevron-back"></ion-icon>{{ 'REG.PREV' | translate}}
                 </ion-button>
                 <ion-button class="btnSubmit textBold ion-text-uppercase" (click)="saveService(slides)">
-                    Save
+                   {{ 'REG.SAVE' | translate}}
                 </ion-button>
             </ion-footer>
 
@@ -400,7 +1258,7 @@
                        <ion-row class="ion-padding-bottom">
                            <ion-col size="12">
                                <ion-label position="floating" class="green">
-                                   Openning Hours
+                                  {{ 'REG.OPENNING' | translate}}
                                </ion-label>
                            </ion-col>
                        </ion-row>
@@ -419,7 +1277,7 @@
 
                 <ion-row>
                     <ion-item lines="none" class="d-flex align-items-center justify-content-center">
-                        <ion-label style="font-size: 12px;font-weight: 600;">Monday</ion-label>
+                        <ion-label style="font-size: 12px;font-weight: 600;">{{ 'REG.MONDAY' | translate}}</ion-label>
                         <ion-checkbox value="Monday" checked="false" (ionChange)="onSelecteCheckBox($event)" slot="start">
                         </ion-checkbox>
                     </ion-item>
@@ -432,14 +1290,14 @@
                            </div>
                     
                     <div *ngIf="!checked" class="d-flex align-items-center">
-                        <ion-label style="font-size: 12px;font-weight: 600; padding-left: 2px;">Closed</ion-label>
+                        <ion-label style="font-size: 12px;font-weight: 600; padding-left: 2px;">{{ 'REG.CLOSED' | translate}}</ion-label>
                     </div>
                 </ion-row>
 
 
                 <ion-row>
                     <ion-item lines="none" class="d-flex align-items-center justify-content-center">
-                        <ion-label style="font-size: 12px;font-weight: 600;">Tusday</ion-label>
+                        <ion-label style="font-size: 12px;font-weight: 600;">{{ 'REG.TUESDAY' | translate}}</ion-label>
                         <ion-checkbox checked="false" value="Tuesday" (ionChange)="onSelectTusday($event)" color="primary" slot="start">
                         </ion-checkbox>
                     </ion-item>
@@ -452,12 +1310,12 @@
 
 
                     <div *ngIf="!checked1" class="d-flex align-items-center">
-                        <ion-label style="font-size: 12px;font-weight: 600;padding-left: 2px;">Closed</ion-label>
+                        <ion-label style="font-size: 12px;font-weight: 600;padding-left: 2px;">{{ 'REG.CLOSED' | translate}}</ion-label>
                     </div>
                 </ion-row>
                 <ion-row>
                     <ion-item lines="none" class="d-flex align-items-center">
-                        <ion-label style="font-size: 12px;font-weight: 600;">Wednesday</ion-label>
+                        <ion-label style="font-size: 12px;font-weight: 600;">{{ 'REG.WEDNESDAY' | translate}}</ion-label>
                         <ion-checkbox checked="false" (ionChange)="onSelecteCheckBoxwed($event)" value="Wednesday" color="primary" slot="start">
                         </ion-checkbox>
                     </ion-item>
@@ -471,13 +1329,13 @@
                 
 
                     <div *ngIf="!checked2" class="d-flex align-items-center">
-                        <ion-label style="font-size: 12px;font-weight: 600;">Closed</ion-label>
+                        <ion-label style="font-size: 12px;font-weight: 600;">{{ 'REG.CLOSED' | translate }}</ion-label>
                     </div>
                 </ion-row>
 
                 <ion-row>
                     <ion-item lines="none" class="d-flex align-items-center">
-                        <ion-label style="font-size: 12px;font-weight: 600;">Thursday</ion-label>
+                        <ion-label style="font-size: 12px;font-weight: 600;">{{ 'REG.THURSDAY' | translate}}</ion-label>
                         <ion-checkbox checked="false" (ionChange)="onSelecteCheckBoxthurs($event)" slot="start"></ion-checkbox>
                     </ion-item>
 
@@ -490,12 +1348,12 @@
             
 
                     <div *ngIf="!checked3" class="d-flex align-items-center">
-                        <ion-label style="font-size: 12px;font-weight: 600; padding-left: 2px;">Closed</ion-label>
+                        <ion-label style="font-size: 12px;font-weight: 600; padding-left: 2px;">{{ 'REG.CLOSED' | translate }}</ion-label>
                     </div>
                 </ion-row>
                 <ion-row>
                     <ion-item lines="none" class="d-flex align-items-center">
-                        <ion-label style="font-size: 12px;font-weight: 600;">Friday</ion-label>
+                        <ion-label style="font-size: 12px;font-weight: 600;">{{ 'REG.FRIDAY' | translate}}</ion-label>
                         <ion-checkbox checked="false" (ionChange)="onSelecteCheckBoxfri($event)" color="primary" slot="start">
                         </ion-checkbox>
                     </ion-item>
@@ -509,13 +1367,13 @@
             
 
                     <div *ngIf="!checked4" class="d-flex align-items-center">
-                        <ion-label style="font-size: 12px;font-weight: 600; padding-left: 2px;">Closed</ion-label>
+                        <ion-label style="font-size: 12px;font-weight: 600; padding-left: 2px;">{{ 'REG.CLOSED' | translate}}</ion-label>
                     </div>
                 </ion-row>
 
                 <ion-row>
                     <ion-item lines="none" class="d-flex align-items-center">
-                        <ion-label style="font-size: 12px;font-weight: 600;">Saturday</ion-label>
+                        <ion-label style="font-size: 12px;font-weight: 600;">{{ 'REG.SATURDAY' | translate }}</ion-label>
                         <ion-checkbox checked="false" (ionChange)="onSelecteCheckBoxsat($event)" color="primary" slot="start">
                         </ion-checkbox>
                     </ion-item>
@@ -527,13 +1385,13 @@
                            
                             </div>
                     <div *ngIf="!checked5" class="d-flex align-items-center">
-                        <ion-label style="font-size: 12px;font-weight: 600; padding-left: 2px;">Closed</ion-label>
+                        <ion-label style="font-size: 12px;font-weight: 600; padding-left: 2px;">{{ 'REG.CLOSED' | translate }}</ion-label>
                     </div>
                 </ion-row>
 
                 <ion-row>
                     <ion-item lines="none" class="d-flex align-items-center">
-                        <ion-label style="font-size: 12px;font-weight: 600;">Sunday</ion-label>
+                        <ion-label style="font-size: 12px;font-weight: 600;">{{ 'REG.SUNDAY' | translate }}</ion-label>
                         <ion-checkbox checked="false" (ionChange)="onSelecteCheckBoxsun($event)" color="primary" slot="start">
                         </ion-checkbox>
                     </ion-item>
@@ -545,14 +1403,14 @@
                            
                         </div>
                     <div *ngIf="!checked6" class="d-flex align-items-center">
-                        <ion-label style="font-size: 12px;font-weight: 600;padding-left: 1px;">Closed</ion-label>
+                        <ion-label style="font-size: 12px;font-weight: 600;padding-left: 1px;">{{ 'REG.CLOSED' | translate }}</ion-label>
                     </div>
                 </ion-row>
 
             </ion-content>
             <ion-footer class="ion-no-border">
                 <div class=" next">
-                <ion-button class="btnSubmit textBold ion-text-uppercase ion-padding-horizontal" (click)="savehours(slides)">Next
+                <ion-button class="btnSubmit textBold ion-text-uppercase ion-padding-horizontal" (click)="savehours(slides)">{{ 'REG.NEXT' | translate}}
                 </ion-button>
             </div> 
         </ion-footer>
@@ -561,13 +1419,13 @@
         <ion-slide>
             <ion-content>
                 <ion-card class="register">
-                    <ion-label position="floating" class="greenColor"> Please add your Shop Photos</ion-label>
+                    <ion-label position="floating" class="greenColor"> {{ 'REG.PHOTO' | translate }}</ion-label>
 
 
             <div class="">
                 <img src="assets/Add_Photo.png" alt="socialmedia-logo" (click)="addPhoto()">
                 <ion-button class="btnSubmit textBold ion-text-uppercase ion-padding-horizontal" (click)="addPhoto()">
-                    Add Photo
+                   {{ 'REG.APHOTO' | translate}}
                 </ion-button>
             </div>
             <ion-img *ngIf="api.img_load" [src]="userProvide.loggedUser.profile_img"></ion-img>
@@ -577,9 +1435,9 @@
             <ion-footer class="ion-no-border">
             <div class="next">
                 <ion-button fill="clear" (click)="slides.slidePrev()">
-                    <ion-icon name="chevron-back"></ion-icon>Prev
+                    <ion-icon name="chevron-back"></ion-icon>{{ 'REG.PREV' | translate}}
                 </ion-button>
-                <ion-button fill="clear" (click)="slides.slideNext()">Next
+                <ion-button fill="clear" (click)="slides.slideNext()">{{ 'REG.NEXT' | translate}}
                     <ion-icon name="chevron-forward"></ion-icon>
                 </ion-button>
             </div>
@@ -596,10 +1454,10 @@
             </ion-content>
             <ion-footer class="ion-no-border">
                 <ion-button fill="clear" type="button" class="ion-padding-horizontal" (click)="slides.slidePrev()">
-                    <ion-icon name="chevron-back"></ion-icon>Prev
+                    <ion-icon name="chevron-back"></ion-icon>{{ 'REG.PREV' | translate}}
                 </ion-button>
                 <ion-button class="btnSubmit textBold" type="button" (click)="register()">
-                Save
+               {{ 'REG.SAVE' | translate}}
                 </ion-button>
             </ion-footer>
         </ion-slide>

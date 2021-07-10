@@ -1,5 +1,15 @@
 <ion-toolbar>
-    <div class="back-circle"> </div>
+    <div class="back-circle"> 
+    </div>
+    <!--<div class="lang">
+    <ion-label for="" style="color: black;margin-left: 70%;">
+        {{ 'LOGIN.SELECT_LANG' | translate }}
+        <ion-select (ionChange)="changeLocale($event)" style="color: black;margin-left: 85%;margin-top: -34px;">
+            <ion-select-option *ngFor="let lang of translate.getLangs()" [value]="lang">{{ lang }}</ion-select-option>
+        </ion-select>
+    </ion-label>-->
+    <!--<button style="color: ghostwhite;background: green; text-align: left;" (click)="changeLocale('locale')">English</button>-->
+    <!--</div>-->
 </ion-toolbar>
 
 <ion-content fullscreen="true">
@@ -9,9 +19,8 @@
       transform="translate(100 100)" />
   </svg>
     <div class="phonenumber">
-        <ion-input class="form-control" *ngIf="!otpsend" style="width: 170px;" size="5" type="number" slot="center" [(ngModel)]="user.Phone" placeholder="Enter Phone Number">
-        </ion-input>
-        <ion-input class="form-control" *ngIf="otpsend" style="width: 170px;" type="string" slot="center" [(ngModel)]="otp" placeholder="Enter the OTP">
+        <ion-input class="form-control" *ngIf="!otpsend" style="width: 300px;" size="5" type="tel" slot="center" [(ngModel)]="user.Phone" placeholder="{{ 'LOGIN.ENTER_PHONE_NUMBER' | translate}}"></ion-input>
+        <ion-input class="form-control" *ngIf="otpsend" style="width: 170px;" type="string" slot="center" [(ngModel)]="otp" placeholder="{{ 'LOGIN.ENTER_OTP' | translate }} ">
         </ion-input>
     </div>
     <div class="ion-padding">
@@ -21,17 +30,19 @@
             <br>
             <div class="otpbutton">
 
-                <ion-button fill="clear" class="btn btn-outline-info" shape="round" *ngIf="otpsend" (click)="verifyotp()">verifyotp</ion-button>
-                <ion-button fill="clear" class="btn btn-outline-info" shape="round" *ngIf="!otpsend" [disabled]="!checked" (click)="Otp()">Send OTP</ion-button>
+                <ion-button fill="clear" class="btn btn-outline-info" shape="round" *ngIf="otpsend" (click)="verifyotp()">{{ 'LOGIN.VERIFY_OTP' | translate }}</ion-button>
+                <ion-button fill="clear" class="btn btn-outline-info" shape="round" *ngIf="!otpsend" [disabled]="!checked" (click)="Otp()">{{ 'LOGIN.SEND_OTP' | translate }}</ion-button>
             </div>
         </form>
+        <div *ngIf="!resend" class="ion-padding resend-item">
+            <ion-label class="resend" style="padding-left: 80px;color: blue;" (click)="Otp()">Resend OTP</ion-label> 
+        </div>
     </div>
 </ion-content>
 <ion-footer class="ion-no-border">
     <ion-toolbar>
         <p class="ion-text-center custom-font">
-            <ion-checkbox [checked]="checked" (ionChange)="addvalue()" value="agree"></ion-checkbox> I agree with <a href="privacy"> terms and
-        conditions</a>
+            <ion-checkbox [checked]="checked" (ionChange)="addvalue()" value="agree"></ion-checkbox>{{ 'LOGIN.I_AGREE_WITH' | translate  }}<a href="privacy"> {{ 'LOGIN.TERMS_AND_CONDITIONS' | translate }}</a>
         </p>
     </ion-toolbar>
 

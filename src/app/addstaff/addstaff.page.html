@@ -1,0 +1,158 @@
+<ion-header>
+  <ion-toolbar style="color:white; background: forestgreen;">
+    <ion-title>addstaff</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides pager="true" #slides [options]="slideOpts" background="#fff">
+    <ion-slide>
+        <ion-content>
+              <ion-card>
+                    <div class="avatar">
+                        <ion-avatar (click)="presentActionSheet()">
+                            <ion-img [src]="staff.staff_img ? staff.staff_img: 'assets/avatar.png'"></ion-img>
+                        </ion-avatar>
+                    </div>
+                <div class="staffInput">
+                    <ion-item lines="none">
+                        <ion-input [(ngModel)]="staff.staffname" placeholder="Enter staff Name"style="font-family:sans-serif;font-size:16px" clearInput></ion-input>
+                    </ion-item>
+                </div>
+            </ion-card>
+          </ion-content>
+          <ion-footer class="ion-no-border">
+            <ion-icon name="chevron-back"></ion-icon>
+            <ion-button type="button" fill="clear" (click)="slides.slideNext()">Prev   
+          </ion-button>
+            <ion-button type="button" fill="clear" (click)="slides.slideNext()">Next
+                <ion-icon name="chevron-forward"></ion-icon>
+            </ion-button>
+        </ion-footer>
+    </ion-slide>
+    
+      <ion-slide>
+          <ion-content>
+            <ion-card>
+                <div class="staff">
+                    <ion-item style="padding-left:auto 5px;padding-right: 50px;">
+                        <!-- <ion-label>Services</ion-label> -->
+                        <ion-select Multiple="true" [(ngModel)]="staff.service" placeholder="Services" style="margin-left: 23px;">
+                            <ion-list *ngFor="let serv of api.service1list">
+                                <div *ngFor="let item of serv.services">
+                                    <div *ngFor="let s of item.services">
+                                    <ion-item>
+                                    <ion-select-option [value]="s.service" style="color: forestgreen;">{{s.service}}</ion-select-option>
+                                    <!-- <ion-label>{{s.service}}</ion-label> -->
+                                </ion-item>
+                            </div>
+                            </div>
+                            </ion-list>
+                            <ion-list *ngFor="let item of api.servicelist">
+                                <ion-item>
+                                    <ion-select-option [value]="item.ServiceName" style="color: forestgreen;">{{item.ServiceName}}</ion-select-option>
+                                    <ion-label style="margin-left: 23px;">{{item.ServiceName}}</ion-label>
+                                </ion-item>
+                            </ion-list>
+                        </ion-select>
+                    </ion-item>
+                </div>
+            </ion-card>
+          </ion-content>
+          <ion-footer class="ion-no-border">
+            <ion-icon name="chevron-back"></ion-icon>
+            <ion-button type="button" fill="clear" (click)="slides.slideNext()">Prev   
+          </ion-button>
+            <ion-button type="button" fill="clear" (click)="slides.slideNext()">Next
+                <ion-icon name="chevron-forward"></ion-icon>
+            </ion-button>
+        </ion-footer>
+        </ion-slide>
+          <!-- 
+            <div *ngIf="staffmb">
+                <div class="staffInputnumber">
+                    <ion-item lines="none">
+                        <ion-input (click)="Durationtime()" style="margin-left: 23px;color:medium" color="medium" [(ngModel)]="staff.worktime">
+                            {{value0}}
+                        </ion-input>
+                    </ion-item>
+                </div>-->
+           <ion-slide>
+                      <ion-content>
+                        <ion-card>
+                    <div *ngIf="openingTime !== undefined">
+                        <ion-list lines="none">
+                            <ion-item>
+                                <ion-label>Monday</ion-label>
+                                <ion-checkbox slot="start" [value]="openingTime.OpeningHours.Monday" [checked]="openingTime.OpeningHours.Monday !== 'closed'" (ionChange)="onChangeEvent($event, 'mon')"></ion-checkbox>
+                                <ion-button shape="round" fill="outline" [color]="'#228B22'" (click)="Mondaytime('mon')">{{ openingTime.OpeningHours.Monday }}</ion-button>
+                            </ion-item>
+                            <ion-item>
+                                <ion-label>Tuesday</ion-label>
+                                <ion-checkbox slot="start" [value]="openingTime.OpeningHours.Tusday" [checked]="openingTime.OpeningHours.Tusday !== 'closed'" (ionChange)="onChangeEvent($event, 'tue')"></ion-checkbox>
+                                <ion-button shape="round" fill="outline" [color]="'#228B22'" (click)="Mondaytime('tue')">{{ openingTime.OpeningHours.Tusday }}</ion-button>
+                            </ion-item>
+                            <ion-item>
+                                <ion-label>Wednesday</ion-label>
+                                <ion-checkbox slot="start" [value]="openingTime.OpeningHours.Wednesday" [checked]="openingTime.OpeningHours.Wednesday !== 'closed'" (ionChange)="onChangeEvent($event, 'wed')"></ion-checkbox>
+                                <ion-button shape="round" fill="outline" [color]="'#228B22'" (click)="Mondaytime('wed')">{{ openingTime.OpeningHours.Wednesday }}</ion-button>
+                            </ion-item>
+                            <ion-item>
+                                <ion-label>Thursday</ion-label>
+                                <ion-checkbox slot="start" [value]="openingTime.OpeningHours.Thursday" [checked]="openingTime.OpeningHours.Thursday !== 'closed'" (ionChange)="onChangeEvent($event, 'thu')"></ion-checkbox>
+                                <ion-button shape="round" fill="outline" [color]="'#228B22'" (click)="Mondaytime('thu')">{{ openingTime.OpeningHours.Thursday }}</ion-button>
+                            </ion-item>
+                            <ion-item>
+                                <ion-label>Friday</ion-label>
+                                <ion-checkbox slot="start" [value]="openingTime.OpeningHours.Friday" [checked]="openingTime.OpeningHours.Friday !== 'closed'" (ionChange)="onChangeEvent($event, 'fri')"></ion-checkbox>
+                                <ion-button shape="round" fill="outline" [color]="'#228B22'" (click)="Mondaytime('fri')">{{ openingTime.OpeningHours.Friday }}</ion-button>
+                            </ion-item>
+                            <ion-item>
+                                <ion-label>Saturday</ion-label>
+                                <ion-checkbox slot="start" [value]="openingTime.OpeningHours.saturday" [checked]="openingTime.OpeningHours.saturday !== 'closed'" (ionChange)="onChangeEvent($event, 'sat')"></ion-checkbox>
+                                <ion-button shape="round" fill="outline" [color]="'#228B22'" (click)="Mondaytime('sat')">{{ openingTime.OpeningHours.saturday }}</ion-button>
+                            </ion-item>
+                            <ion-item>
+                                <ion-label>Sunday</ion-label>
+                                <ion-checkbox slot="start" [value]="openingTime.OpeningHours.Sunday" [checked]="openingTime.OpeningHours.Sunday !== 'closed'" (ionChange)="onChangeEvent($event, 'sun')"></ion-checkbox>
+                                <ion-button shape="round" fill="outline" [color]="'#228B22'" (click)="Mondaytime('sun')">{{ openingTime.OpeningHours.Sunday }}</ion-button>
+                            </ion-item>
+                        </ion-list>
+                    </div>
+                </ion-card>
+              </ion-content>
+              <ion-footer class="ion-no-border">
+                <ion-icon name="chevron-back"></ion-icon>
+                <ion-button type="button" fill="clear" (click)="slides.slideNext()">Prev   
+              </ion-button>
+                <ion-button type="button" fill="clear" (click)="slides.slideNext()">Next
+                    <ion-icon name="chevron-forward"></ion-icon>
+                </ion-button>
+            </ion-footer>
+            </ion-slide>
+           
+              <ion-slide>
+                  <ion-content>
+                    <ion-card>
+                <div class="staffInputnumber">
+                    <ion-item lines="none">
+                        <ion-input type="number" [(ngModel)]="staff.phone" style="font-size:14px;" placeholder="Enter phone number" clearInput>
+                        <ion-icon name="call" style="color: #84878a;"></ion-icon></ion-input>
+                    </ion-item>
+                </div>
+                </ion-card>
+              </ion-content>
+              <ion-footer class="ion-no-border">
+                <ion-icon name="chevron-back"></ion-icon>
+                <ion-button type="button" fill="clear" (click)="slides.slideNext()">Prev   
+              </ion-button>
+              <ion-button class="btnSubmit textBold ion-text-uppercase" shape="round" expand="block" class=" align-items-center" (click)="getStaffDetails()">
+                Save
+                </ion-button>
+            </ion-footer>
+            </ion-slide>
+          </ion-slides>
+
+
+
+</ion-content>

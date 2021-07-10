@@ -12,6 +12,7 @@
     <ion-img src="assets/upload-file.png"></ion-img>
     Add Photos of Workplace
   </div>
+
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button *ngIf="!changeUpload" (click)="toggleUpload()">
        <ion-icon name="add"></ion-icon> 
@@ -20,6 +21,7 @@
        <ion-icon name="close"></ion-icon>
     </ion-fab-button>
   </ion-fab>
+  
   <ion-card *ngIf="changeUpload" (click)="presentActionSheet()">
     <ion-item *ngIf="!userProvide.loadPhoto">
       <ion-thumbnail class="ion-thumbnail">
@@ -55,7 +57,7 @@
        </ion-row> 
        <ion-row>
           <ion-col size="12">
-            <ion-img class="img ion-padding" [src]="item.place_img"></ion-img>
+            <ion-img [src]="userProvide.placeImage"></ion-img>
           </ion-col>
        </ion-row>
     </ion-grid>

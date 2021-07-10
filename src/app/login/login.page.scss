@@ -30,9 +30,9 @@ ion-content {
         margin-bottom:3vh;
         margin-top: 20vh;
         margin-left: 20px;
-        margin-right: 25px;
-        padding-left: 45px;
-        max-width: 270px;
+        margin-right: 10px;
+        padding-left: 10px;
+        max-width: 300px;
         box-shadow: 0 1vh 3vh 0vh rgba(25, 55, 25, .8);
         box-sizing: 0 1vh 3vh 0vh;
         align-self: center;
@@ -66,7 +66,7 @@ ion-content {
         height: 7vh;
         background-color: darkgreen;
         min-width: 100px;
-        max-width: 160px;
+        max-width: 190px;
         border-radius: 8vh;
         font-size: 14px;
         margin: auto 5vh;
@@ -105,4 +105,10 @@ ion-toolbar {
             font-family: monospace;
         }
     }
+}
+.lang{
+    padding-left: 60%;
+    font-size: 14px;
+    font-family: sans-serif;
+    color: darkolivegreen;
 }

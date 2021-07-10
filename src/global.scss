@@ -78,8 +78,9 @@ button{
   }
 }
 .monthview-selected {
-  background-color: transparent !important;
-  --color: darkblue!important;
+  background-color: blue !important;
+  color: white!important;
+  font-weight: bold !important;
 }
 
 td.monthview-current {
@@ -99,7 +100,11 @@ td.monthview-current {
     background-color: transparent!important;
   }
 }
-
+.weekview-allday-content-table {
+.calendar-event-inner {
+  background-color: red !important;
+}
+}
 .calendar-day {
   border-radius: 6px;
   padding: 3px 5px;

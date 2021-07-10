@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-icon name="chevron-back" routerLink="/settings" style="color: white;padding-left: 10px;"></ion-icon>
+      <ion-title style="color: white;">Language</ion-title>
+  </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>Language(English-US)</ion-label>
+      <ion-toggle [(ngModel)]="pepperoni" color="success"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        மொழி(தமிழ்)</ion-label>
+      <ion-toggle color=success></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>भाषा(हिन्दी)</ion-label>
+      <ion-toggle color="success"></ion-toggle>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -7,7 +7,9 @@ import { environment } from 'src/environments/environment';
 import { FirestoreService } from '../services/firestore.service';
 import { UserproviderService } from '../services/userprovider.service';
 import { ApiService } from '../services/api.service';
-import { MenuController } from '@ionic/angular';
+import { MenuController, Platform } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
+import { I18nServiceService } from '../services/i18n-service.service';
 
 
 
@@ -26,22 +28,37 @@ export class LoginPage implements OnInit {
   windowref: any;
   otp: string;
   otpsend = false;
+  resend = true;
+  resendInter: any;
   
   checked:boolean=true;
   loggedInUser: any;
 
   constructor(private auth: AngularFireAuth,
     private router: Router,
+    private translate: TranslateService,
     private windowservice: WindowService,
     private firestore: FirestoreService,
     private userProvide: UserproviderService,
-    private api: ApiService, 
-    private menuCtrl: MenuController) { }
+    private api: ApiService,
+    private plt: Platform, 
+    private i18nService:I18nServiceService,
+    private menuCtrl: MenuController) {
+      translate.addLangs(['en','ta','hi']);
+      translate.setDefaultLang('en');
+      const browserLang = this.translate.getBrowserLang();
+      translate.use(browserLang.match(/en | ta | hi /) ? browserLang : 'en');
+      this.translate.use('en');
+     }
 
   ngOnInit() {
     this.menuCtrl.enable(false);
     this.menuCtrl.swipeGesture(false);
     this.windowref = this.windowservice.windowRef;
+    
+  this.i18nService.localeEvent.subscribe(locale => this.translate.use(locale));
+
+    //this.translate.use('hi');
   }
 
   ngAfterViewInit() {
@@ -55,18 +72,40 @@ export class LoginPage implements OnInit {
     this.windowref.recaptchaVerifier.render();
   }
 
-  Otp() {
+  changeLocale(locale){
+
+  this.translate.use(locale.detail.value);
+  console.log(locale);
+  }
+  resendOTP(){
+    this.resendInter = setTimeout(() => {
+      this.resend = !this.resend;
+      this.clearTimeout();
+    }, 15000);
+  }
+
+  clearTimeout(){
+    clearTimeout(this.resendInter);
+  }
+ async Otp() {
+if(this.user.Phone.length === 10){
     this.otpsend = true;
+    this.resend = true;
+    this.checked = true;
+    this.resendOTP();
     this.mobileno = this.user.dialcode + this.user.Phone;
     this.auth.signInWithPhoneNumber(this.mobileno, this.windowref.recaptchaVerifier)
       .then((confirmationResult) => {
+        this.checked = true;
         this.windowref.confirmationResult = confirmationResult;
       });
   }
-
+  else{
+  const toast = await this.userProvide.createToast('Mobile number invalid', false,'top',500,'toast-custom-class');
+  await toast.present();
+  }
+}
   verifyotp() {
-
-    //this.otpsend = false;
     this.mobileno = this.user.dialcode + this.user.Phone;
     const client = {
       'id': null,
@@ -88,6 +127,9 @@ export class LoginPage implements OnInit {
           this.userProvide.setLoggedInUser(usr);  
           this.loggedInUser = this.userProvide.getUserData();
           this.otpsend = false;
+          this.resend = true;
+          //this.spinner = true;
+          this.checked = true;
           this.user.Phone = '';
           if( this.loggedInUser.bussinessname !== null){
              this.router.navigate(['/home']); 

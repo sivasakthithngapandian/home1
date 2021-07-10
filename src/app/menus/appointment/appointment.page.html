@@ -3,44 +3,62 @@
         <ion-buttons slot="start" style="color: white;">
             <ion-menu-button menu="main-menu" style="color: white;"></ion-menu-button>
         </ion-buttons>
-        <ion-title style="color: white;">Appointment</ion-title>
+        <ion-title style="color: white;">{{ 'APPOINT.APPOINT' | translate}}</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
     <div *ngIf="showAddEvent" class="ion-padding">
-        <ion-item>
+
+        <ion-item lines="none">
             <ion-icon name="person" slot="start"></ion-icon>
-            <ion-input type="text" placeholder="Client Name" [(ngModel)]="newEvent.clientname"></ion-input>
+            <ion-input type="text" style="font-family: sans-serif;" placeholder="{{ 'APPOINT.INCLIENT' | translate }}" [(ngModel)]="newEvent.clientname"></ion-input>
         </ion-item>
-        <ion-item>
-            <img src="assets/haircut.png">
-            <ion-input type="text" placeholder="Service Name"style="margin-left:40px;" [(ngModel)]="newEvent.service"></ion-input>
-        </ion-item>
+        <!--<ion-item>-->
+            <div class="staff">
+
+                <ion-item style="padding-left:auto 5px;padding-right: 50px;">
+                    <img src="assets/haircut.png">
+                    <!-- <ion-label>Services</ion-label> -->
+                    <ion-select Multiple="true" [(ngModel)]="staff.service" placeholder="{{'APPOINT.SERVICES' | translate}}'"  style="margin-left: 37px;">
+                        <ion-list *ngFor="let serv of api.service1list">
+                            <div *ngFor="let item of serv.services">
+                                <div *ngFor="let s of item.services">
+                                <ion-item>
+                                <ion-select-option [value]="s.service" style="color: forestgreen;">{{s.service}}</ion-select-option>
+                                <!-- <ion-label>{{s.service}}</ion-label> -->
+                            </ion-item>
+                        </div>
+                        </div>
+                        </ion-list>
+                        <ion-list *ngFor="let item of api.servicelist">
+                            <ion-item>
+                                <ion-select-option [value]="item.ServiceName" style="color: forestgreen;">{{item.serviceName}}</ion-select-option>
+                                <ion-label style="margin-left: 23px;">{{item.serviceName }}</ion-label>
+                            </ion-item>
+                        </ion-list>
+                    </ion-select>
+                </ion-item>
+            </div>
+            
+
+            <!--<ion-input type="text" placeholder="Service Name"style="margin-left:40px;" [(ngModel)]="newEvent.service"></ion-input>
+            </ion-item>-->
         <ion-item>
                 <ion-icon name="calendar" slot="start"></ion-icon>
-                <ion-label color="medium">Date</ion-label>
+                <ion-label style="color:grey;">{{ 'APPOINT.DATE' | translate }}</ion-label>
             <ion-datetime doneText="ok" cancelText="close" i18n displayFormat="DD/MM/YYYY" pickerFormat="MMM D" [(ngModel)]="newEvent.Date" [min]="minDate"></ion-datetime>
         </ion-item>
-        <!-- staffname -->
-        <!-- <ion-item>
-      <ion-label>Select staff</ion-label>
-      <ion-select multiple="true" [(ngModel)]="showHideForm.staff">
-        <ion-select-option value="Any staffer">Any staffer</ion-select-option>
-         <ion-list *ngFor="let item of staffnamedata">
-          <ion-select [(ngModel)]="staffnamelist.staffname">
-            <ion-select-option value="{{item.StaffName}}">{{item.StaffName}}</ion-select-option>
-          </ion-select>
-          <ion-label>{{item.StaffName}}</ion-label>
-        </ion-list> 
-      </ion-select>
-    </ion-item> -->
 
         <ion-item>
             <ion-icon name="time" slot="start"></ion-icon>
-            <ion-input type="text" placeholder="Enter time" [(ngModel)]="newEvent.time" (click)="open()"></ion-input>
+            <!--<ion-label style="color: grey;size: 2;" (click)="Durationtime()">{{ 'APPOINT.TIME' | translate }} </ion-label>-->
+            <ion-input (click)="Durationtime()" placeholder="{{ 'APPOINT.TIME' | translate }}" slot="end" [(ngModel)]="newEvent.time" >
+                {{value0}}
+            </ion-input>
         </ion-item>
-        <ion-button class="btnSubmit textBold ion-text-uppercase ion-padding-horizontal ion-padding-vertical" (click)="addEvent()"><ion-icon name="add-sharp"></ion-icon>Add Event</ion-button>
+
+        <ion-button class="btnSubmit textBold ion-text-uppercase ion-padding-horizontal ion-padding-vertical" (click)="addEvent()"><ion-icon name="add-sharp"></ion-icon>{{ 'APPOINT.ADDRE' | translate}}</ion-button>
     </div>
     <ion-calendar (click)="event()" [(ngModel)]="Date" *ngIf="!showAddEvent">
     </ion-calendar>
@@ -84,10 +102,11 @@
                             <ion-label style="color: forestgreen;font-size: 14px;font-family: sans-serif;" lines="none">Booking Time:</ion-label>
                         </ion-col>
                         <ion-col>
-                            <p style="font-size: 14px;font-family: sans-serif;">{{item.time}}</p>
+                            <p style="font-size: 14px; color: white;font-family: sans-serif;font-weight: 500;text-align: center;">{{newEvent.time}} </p>
                         </ion-col>
                     </ion-row>
                 </ion-item>
+                
             </ion-card-content>
         </ion-card>
     </div>
@@ -100,6 +119,34 @@
     </ion-fab>
     <!-- <ion-item>
     <ion-button (click)="client()">New Appointment</ion-button>
-  </ion-item>  -->
+  </ion-item>
+  
+<div class="con" slot="bottom">
+    <div class="phone">
+        <input type="radio" name="s" id="s1">
+        <input type="radio" name="s" id="s2" checked="checked">
+        <input type="radio" name="s" id="s3">
 
+        <label for="s1">
+      <ion-icon routerLink="/appointment" name="people-circle-outline">
+      </ion-icon>
+      <div class="des">Appointments</div>
+    </label>
+        <label for="s2">
+      <ion-icon routerLink="/service" name="cut-outline"></ion-icon>
+      <div class="des">Services</div>
+    </label>
+        <label for="s3">
+      <ion-icon routerLink="/staff" name="person-add-outline"></ion-icon>
+      <div class="des"> Staff</div>
+    </label>
+        <div class="circle"></div>
+        <div class="phone_content">
+            <div class="phone_bottom">
+                <span class="indicator"></span>
+            </div>
+        </div>
+    </div>
+</div>
+  -->
 </ion-content>

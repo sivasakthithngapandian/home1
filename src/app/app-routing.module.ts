@@ -94,7 +94,8 @@ const routes: Routes = [
   {
     path: 'services',
     loadChildren: () => import('./menus/services/services.module').then( m => m.ServicesPageModule)
-  },  {
+  },
+  {
     path: 'faq',
     loadChildren: () => import('./settings/faq/faq.module').then( m => m.FaqPageModule)
   },
@@ -106,6 +107,14 @@ const routes: Routes = [
     path: 'help',
     loadChildren: () => import('./settings/help/help.module').then( m => m.HelpPageModule)
   },
+  {
+    path: 'language',
+    loadChildren: () => import('./language/language.module').then( m => m.LanguagePageModule)
+  },  {
+    path: 'addstaff',
+    loadChildren: () => import('./addstaff/addstaff.module').then( m => m.AddstaffPageModule)
+  },
+
 
 
 

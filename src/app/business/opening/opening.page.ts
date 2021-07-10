@@ -16,29 +16,6 @@ import { ApiService } from 'src/app/services/api.service';
 export class OpeningPage implements OnInit {
 
   public succes = "#228B22";
-  // public open = {
-  //   Monday: 'am' + 'pm',
-  //   am: '',
-  //   pm: '',
-  //   tusday: 'am1' + 'pm1',
-  //   am1: '',
-  //   pm1: '',
-  //   wednesday: 'am2' + 'pm2',
-  //   am2: '',
-  //   pm2: '',
-  //   thursday: 'am3' + 'pm3',
-  //   am3: '',
-  //   pm3: '',
-  //   friday: 'am4' + 'pm4',
-  //   am4: '',
-  //   pm4: '',
-  //   saturday: 'am5' + 'pm5',
-  //   am5: '',
-  //   pm5: '',
-  //   sunday: 'am6' + 'pm6',
-  //   am6: '',
-  //   pm6: '',
-  // }
 
   public myTimeFormMon: FormGroup
   private OpenTimeMon: number = 1;

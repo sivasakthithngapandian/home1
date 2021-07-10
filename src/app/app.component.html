@@ -6,7 +6,8 @@
                     <ion-menu-toggle autoHide="false">
  
                                 <ion-avatar style="height: 120px; width: 120px;"class="profile_pic">
-                                    <ion-img src="assets/avatar.png"></ion-img>
+                                    <!--<ion-img [src]="userProvideserv.loggedUser.profile_img1 ? userProvideserv.loggedUser.profile_img1 : 'assets/avatar.png' " style="margin-top: 30px;"></ion-img>
+                                    --><ion-img src=" assets/avatar.png"></ion-img>
 
                                 <div class="mob">
                                     <!--<ion-label class="mob" style="align-self:center;font-weight:bold;">{{mobilenu}}</ion-label>
@@ -26,17 +27,17 @@
 
                         <ion-item routerLink="/home">
                             <ion-icon name="calendar-number-outline" slot="start" style="font-weight: 500;"></ion-icon>
-                            <ion-label>Appointment</ion-label>
+                            <ion-label>{{ 'APPOINT.APPOINT' | translate}}</ion-label>
                         </ion-item>
 
                         <ion-item routerLink="/sales">
                             <ion-icon name="cart-outline" slot="start" style="font-weight: 500;"></ion-icon>
-                            <ion-label>sales</ion-label>
+                            <ion-label>{{'MENU.SALES' | translate}}</ion-label>
                         </ion-item>
 
                         <ion-item routerLink="/inventory">
                             <ion-icon name="add-circle-outline" slot="start" style="font-weight: 500;"></ion-icon>
-                            <ion-label>Categories</ion-label>
+                            <ion-label>{{'MENU.CAT' | translate}}</ion-label>
                         </ion-item>
 
                         <!-- <ion-item routerLink="/business">
@@ -46,7 +47,7 @@
 
                         <ion-item routerLink="/settings">
                             <ion-icon name="construct-outline" slot="start" style="font-weight: 500;"></ion-icon>
-                            <ion-label>Settings</ion-label>
+                            <ion-label>{{'MENU.SET' | translate}}</ion-label>
                         </ion-item>
 
                         <ion-item routerLink="/reviews">
@@ -55,10 +56,19 @@
                         </ion-item>
 
                         <div class="center">
-                            <ion-button class="btnLogout" shape="round" (click)="close()">Logout</ion-button>
+                            <ion-button class="btnLogout" shape="round" (click)="close()">{{'MENU.LOG' | translate}}
+
+                            </ion-button>
                         </div>
                     </ion-menu-toggle>
                 </ion-list>
+                <ion-footer>
+                    <div class="center">
+                        <ion-button class="btnLogout" shape="round" (click)="delete()">
+                         <ion-icon name="trash" slot="start" style="size: 35px; color: white;"></ion-icon>Delete
+                        </ion-button>
+                    </div>
+                </ion-footer>
             </ion-content>
         </ion-menu>
         <ion-router-outlet [swipeGesture]="false" id="main"></ion-router-outlet>

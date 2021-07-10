@@ -29,6 +29,8 @@
     "@ionic/angular": "^5.5.2",
     "@ionic/pwa-elements": "^3.0.2",
     "@ng-bootstrap/ng-bootstrap": "^9.1.0",
+    "@ngx-translate/core": "^13.0.0",
+    "@ngx-translate/http-loader": "^6.0.0",
     "amazing-time-picker": "^1.8.0",
     "angular2-uuid": "^1.1.1",
     "bootstrap": "^5.0.0-beta3",

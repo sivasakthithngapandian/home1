@@ -1,0 +1,88 @@
+  {    
+    "LOGIN":
+    { 
+      "SELECT_LANG":"Language",
+      "SEND_OTP": "Send OTP",
+      "ENTER_PHONE_NUMBER":"Enter phone number",
+      "ENTER_OTP":"Enter the OTP",
+      "VERIFY_OTP":"Verify OTP",
+      "I_AGREE_WITH":"I agree with",
+      "TERMS_AND_CONDITIONS":"Terms and Conditions"
+    },
+  
+"REG":
+  {
+    "WEL":"You've logged in successfully",
+    "NEXT":"Next",
+    "REGISTER":"Registration",
+    "SHOP_NAME":"Please add your Shop Name",
+    "ISHOP_NAME":"Enter shop name",
+    "PREV":"Prev",
+    "NAME":"Please add your Name",
+    "INAME":"Enter your Name",
+    "PHONE":" Please add your Mobile Numbers",
+    "PRIMARY":"Primary Number:",
+    "ISPRIMARY":"secondary Number(Optional)",
+    "ICPRIMARY":"custom Number(Optional)",
+    "EMAIL":"Please add your Email id",
+    "IEMAIL":"Enter Email",
+    "FB":" Please add your Public Profile Link(facebook/instagram)",
+    "IFB":"Enter facebook link",
+    "IINSTA":"Enter instagram link",
+    "ADDRESS":"Please search shop address",
+    "ADDRE":"Address",
+    "YADDRESS":"Your Address",
+    "CITY":"City",
+    "PINCODE":"Zipcode",
+    "CONTIN":"Continue",
+    "CCATEGORY":"Choose Categories",
+    "SERVICE":"services",
+    "PRICE":"Price",
+    "DURATION":"Duration( mins )",
+    "SAVE":"Save",
+    "OPENNING":"Openning Hours",
+    "MONDAY":"Monday",
+    "CLOSED":"Closed",
+    "TUESDAY":"Tuesday",
+    "WEDNESDAY":"Wednesday",
+    "THURSADY":"Thursday",
+    "FRIDAY":"Friday",
+    "SATURDAY":"Saturday",
+    "SUNDAY":"Sunday",
+    "PHOTO":"Please add your Shop Photos",
+    "APHOTO":"Add Photo"
+  },
+  "APPOINT":{
+    "INCLIENT":"enter client name",
+    "TIME":"Time",
+    "ADDRE":"ADD EVENT",
+    "APPOINT":"Appointment",
+    "DATE":"Date",
+    "SERVICES":"Services"
+  },
+  
+  "MENU":
+  {
+      "SALES":"Sales",
+      "CAT":"Category",
+      "SET":"Settings",
+      "LOG":"LOGOUT"
+  },
+  "SET":{
+      "PROFILE":"Profile",
+      "HELP":"Help",
+      "WORK":"Work Place",
+      "PHOTO":"Photos",
+      "LANG":"LAnguage Settings",
+      "PRIVACY":"Privacy & Policy",
+      "FAQ":"FAQ"
+  },
+    "CATEGORY":"Hair Salon",
+    "SERVICES":[
+     { "SERVICE":"Hair Cut", "PRICE":"70","TIME":"20"},
+     { "SERVICE":"Hair Color", "PRICE":"60","TIME":"10"},
+     { "SERVICE":"Hair Style", "PRICE":"50","TIME":"15"},
+     { "SERVICE":"Hair Exture", "PRICE":"100","TIME":"35"},
+     { "SERVICE":"Hair Extension", "PRICE":"350","TIME":"50"}]
+    
+}  
