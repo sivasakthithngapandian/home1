@@ -48,6 +48,18 @@ export class FirestoreService {
     return this.store.collection<T>(collection).valueChanges({ idField: 'id' }).pipe(take(1));
   };
 
+  public removeField<T extends BaseDatabaseModels>(collection: string, subCollectionName: string, id: string, sid: string, document: Partial<T>): Promise<any> {
+   // console.log('delete up',this.store.doc<T>(`${collection}/${id}/${subCollectionName}/${id}`))
+    return  this.store.doc<T>(`${collection}/${id}/${subCollectionName}/${sid}`).delete()
+  };
+  public removeInnerId<T extends BaseDatabaseModels>(collection: string, id: string, subcollection: string, subid: T, idsub: string): Promise<void>{
+    return this.store.doc<T>(`${collection}/${id}/${subcollection}/${idsub}`).delete();
+  };
+
+  public delete<T extends BaseDatabaseModels>(collection: string, id: string): Promise<any> {
+    return this.store.doc<T>(`${collection}/${id}`).delete();
+  }
+
 
   public getdata<T extends BaseDatabaseModels>(collection: string, id: string, subCollectionName: string, document: Partial<T>): Observable<T[]> {
     //console.log('resss')

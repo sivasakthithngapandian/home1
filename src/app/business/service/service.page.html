@@ -30,9 +30,21 @@
                             </ion-row>
                         </ion-card>
                    </ion-item>
+                   <ion-item-options side="start">
+                       <ion-item-option color="danger" (click)="delete(se)">
+                        <ion-icon name="trash" slot="start" style="size: 35px; color: white;"></ion-icon>Delete
+                    </ion-item-option>
+                    <ion-item-option color="secondary" (click)="swipeEnd(se)">
+                        <ion-icon name="pencil" slot="start" style="size: 50px; color: white;"></ion-icon>Edit
+                    </ion-item-option>
+                     </ion-item-options>
+
                    <ion-item-options side="end">
                     <ion-item-option color="secondary" (click)="swipeEnd(se)">
                         <ion-icon name="pencil" slot="start" style="size: 50px; color: white;"></ion-icon>Edit
+                    </ion-item-option>
+                    <ion-item-option color="danger" (click)="delete(se)">
+                        <ion-icon name="trash" slot="start" style="size: 35px; color: white;"></ion-icon>Delete
                     </ion-item-option>
                      </ion-item-options>
                    </ion-item-sliding>
@@ -65,9 +77,20 @@
                 </ion-item>
                 </div>
             </div>
+            <ion-item-options side="start">
+                <ion-item-option color="danger" (click)="deleteService(item)">
+                   <ion-icon name="trash" slot="start" style="size: 35px; color: white;"></ion-icon>Delete
+               </ion-item-option>
+                <ion-item-option color="secondary" (click)="EditService(item)">
+                    <ion-icon name="pencil" slot="start" style="size: 35px; color: white;"></ion-icon>Edit
+                </ion-item-option>
+            </ion-item-options> 
                 <ion-item-options side="end">
                     <ion-item-option color="secondary" (click)="EditService(item)">
                         <ion-icon name="pencil" slot="start" style="size: 35px; color: white;"></ion-icon>Edit
+                    </ion-item-option>
+                     <ion-item-option color="danger" (click)="deleteService(item)">
+                        <ion-icon name="trash" slot="start" style="size: 35px; color: white;"></ion-icon>Delete
                     </ion-item-option>
                 </ion-item-options>    
             </ion-item-sliding>

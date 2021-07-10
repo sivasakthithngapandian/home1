@@ -10,6 +10,11 @@
 <ion-content>
     <div *ngIf="!staffmb">
         <ion-card *ngFor="let staf of api.staffs" class="display">
+            <div>
+                <ion-button fill="clear">
+                    <ion-icon name="calendar-number" style="color: white;"></ion-icon>
+                </ion-button>
+            </div>
             <ion-grid>
                 <ion-row>
                     <ion-col>

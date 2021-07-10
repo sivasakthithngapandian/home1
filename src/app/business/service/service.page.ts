@@ -91,6 +91,7 @@ export class ServicePage implements OnInit {
     }
     this.firestore.updateField('users', 'service', serviceInfo.id, serviceInfo).then(response => {
       console.log("response", response)
+      this.userProvideserv.setLoggedInUser(serviceInfo);
     });
     this.servicehide=false;
     console.log('services', serviceInfo);
@@ -196,6 +197,7 @@ export class ServicePage implements OnInit {
              console.log('Confirm Ok', data);
              this.api.updatedservice(this.userProvideserv.loggedUser.id, service).subscribe((res)=>{
               console.log('users update the service',res);
+              this.userProvideserv.setLoggedInUser(service);
             
                })
               
@@ -249,9 +251,10 @@ export class ServicePage implements OnInit {
            this.api.serviceDatalist.forEach(data => {
              data.services.forEach(dat => {
                 dat.services.forEach((csv, index) => {
+                  console.log('csv', csv)
                    if(csv.service === item.service){
                      csv.time = datang.time;
-                     csv.price = datang.price;
+                     csv.price = datang.price;//dat.services.splice(index,1)
                    }   
                 });
                 this.serviceList.push(dat);
@@ -268,4 +271,72 @@ export class ServicePage implements OnInit {
     await alert.present();
  }
 
+ async deleteService(item){
+  const alert = await this.alertcontroller.create({
+    cssClass: 'my-custom-class',
+     header: 'Confirm!',
+     message: 'Do you want to delete this service?',
+     buttons:[
+       {
+        text: 'No',
+        role: 'cancel',
+        cssClass: 'secondary',
+        handler: (blah) => {
+          console.log('Confirm Cancel: blah');
+        },
+       },
+       {
+        text: 'Yes',
+        handler: async(datang:any) => {
+          this.api.removeService(this.userProvideserv.loggedUser.id, item);
+          await alert.dismiss();
+        }
+      }
+    ]
+  });
+  await alert.present();
+ }
+ async delete(se){
+  this.serviceList = [];
+   console.log('see', se)
+   const alert = await this.alertcontroller.create({
+     cssClass: 'my-custom-class',
+     header: 'Confirm!',
+     message: 'Do you want to delete this service?',
+     buttons:[
+       {
+        text: 'No',
+        role: 'cancel',
+        cssClass: 'secondary',
+        handler: (blah) => {
+          console.log('Confirm Cancel');
+        },
+       },
+       {
+         text: 'yes',
+         handler: async(datang:any) => {
+           console.log('see', se)
+           this.api.serviceDatalist.forEach(data=>{
+             data.services.forEach(res=>{
+               res.services.forEach((use,index)=>{
+                // console.log('deleted',use)
+                 if(use.service===se.service){
+                   res.services.splice(index,1);
+                 }
+               });
+               this.serviceList.push(res);
+               console.log(this.serviceList);
+             })
+           });
+           this.api.updateService(this.userProvideserv.loggedUser.id, { services: this.serviceList }).subscribe(res => {
+            console.log("Service Updated", this.serviceList);
+        });
+        await alert.dismiss();
+         },
+       }
+     ]
+   });
+   await alert.present();
+   
+ };
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Platform } from '@ionic/angular';
+import { AlertController, Platform } from '@ionic/angular';
 import { UserproviderService } from './services/userprovider.service';
 import { Plugins, StatusBarStyle } from '@capacitor/core';
 const { SplashScreen, StatusBar } = Plugins;
@@ -27,6 +27,7 @@ export class AppComponent implements OnInit {
     private plt: Platform,
     private firestore: FirestoreService,
     private api: ApiService,
+    private alertcontroller: AlertController,
     private userProvide: UserproviderService) {
       
     this.initializeApp();
@@ -69,5 +70,38 @@ export class AppComponent implements OnInit {
     await this.userProvide.logout();
     this.router.navigate(['/login'])
   }
+
+  async delete(){
+    const alert = await this.alertcontroller.create({
+      cssClass: 'my-custom-class',
+       header: 'Confirm!',
+       message: 'Do you want to delete this Account?',
+       buttons:[
+         {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          },
+         },
+         {
+          text: 'Yes',
+          handler: async(datang:any) => {
+            this.firestore.delete('users',this.userProvide.loggedUser.id).then(res=>{
+              this.userProvide.goToNew('/login');
+             });
+            await alert.dismiss();
+          }
+        }
+      ]
+    });
+    await alert.present();
+   }
+  // delete(){
+  //   this.firestore.delete('users',this.userProvide.loggedUser.id).then(res=>{
+  //    this.userProvide.goToNew('/login');
+  //   });
+  // }
 
 }

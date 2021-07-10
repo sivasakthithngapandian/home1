@@ -31,29 +31,6 @@ export class RegistrationPage implements OnInit {
     allowTouchMove: false,
   }
 
-  public myForm: FormGroup;
-  private phoneNumber: number = 1;
-
-  public myTimeFormMon: FormGroup;
-  private OpenTimeMon: number = 1;
-
-  public myTimeForm: FormGroup;;
-  private OpenTime: number = 1;
-
-  public myTimeFormwed: FormGroup;
-  private OpenTimewed: number;
-
-  public myTimeFormthurs: FormGroup;
-  private OpenTimethurs: number = 1;
-
-  public myTimeFormfri: FormGroup;
-  private OpenTimefri: number = 1;
-
-  public myTimeFormsat: FormGroup;
-  private OpenTimesat: number = 1;
-
-  public myTimeFormsun: FormGroup;
-  private OpenTimesun: number = 1;
 
   autoCompleteItems = [];
   searchTerm = '';
@@ -107,6 +84,22 @@ export class RegistrationPage implements OnInit {
   value4 = 'closed';
   value5 = 'closed';
   value6 = 'closed';
+
+  value7 = 'closed';
+  value8 = 'closed';
+  value9 = 'closed';
+  value10 = 'closed';
+  value11 = 'closed';
+  value12 = 'closed';
+  value13 = 'closed';
+
+  value14 = 'closed';
+  value15 = 'closed';
+  value16 = 'closed';
+  value17 = 'closed';
+  value18 = 'closed';
+  value19 = 'closed';
+  value20 = 'closed';
   checked = false
   checked1 = false
   checked2 = false
@@ -114,6 +107,21 @@ export class RegistrationPage implements OnInit {
   checked4 = false
   checked5 = false
   checked6 = false
+
+  time= true;
+  timemon= true;
+  time1= true;
+  timeTus= true;
+  time2= true;
+  timeWed= true;
+  time3= true;
+  timeThus= true;
+  time4= true;
+  timeFri= true;
+  time5= true;
+  timeSat= true;
+  time6= true;
+  timeSun= true;
 
   latitude: any;
   longitude: any;
@@ -140,37 +148,7 @@ export class RegistrationPage implements OnInit {
     private userProvide: UserproviderService
 
   ) {
-    this.myForm = formBuilder.group({
-      phoneNumber1: ['', Validators.required]
-    });
-
-    this.myTimeFormMon = formBuilder.group({
-      OpenTimeMon: ['', Validators.required]
-    })
-
-    this.myTimeForm = formBuilder.group({
-      OpenTime1: ['', Validators.required]
-    })
-
-    this.myTimeFormwed = formBuilder.group({
-      OpenTimewed: ['', Validators.required]
-    })
-
-    this.myTimeFormthurs = formBuilder.group({
-      OpenTimethurs: ['', Validators.required]
-    })
-
-    this.myTimeFormfri = formBuilder.group({
-      OpenTimefri: ['', Validators.required]
-    })
-
-    this.myTimeFormsat = formBuilder.group({
-      OpenTimesat: ['', Validators.required]
-    })
-
-    this.myTimeFormsun = formBuilder.group({
-      OpenTimesun: ['', Validators.required]
-    })
+    
 
   }
 
@@ -208,81 +186,9 @@ export class RegistrationPage implements OnInit {
 
 
   numColumns: number = 2;
-  numOptions: number = 144;
+  numOptions: number = 156;
 
-  addControltime1() {
-    this.OpenTimeMon++
-    this.myTimeFormMon.addControl('OpenTimewed' + this.OpenTimeMon, new FormControl('', Validators.required))
-  }
-  removeControlTime1(control) {
-    this.OpenTimeMon--
-    this.myTimeFormMon.removeControl(control.key)
 
-  }
-
-  addControltime() {
-    //this.add = true;
-    this.OpenTime++
-    this.myTimeForm.addControl('OpenTime' + this.OpenTime, new FormControl('', Validators.required));
-  }
-
-  removeControlTime(control) {
-    this.OpenTime--
-    this.myTimeForm.removeControl(control.key)
-    // this.add = false;
-  }
-
-  addControltime2() {
-    //this.add = true;
-    this.OpenTimewed++
-    this.myTimeFormwed.addControl('OpenTimewed' + this.OpenTimewed, new FormControl('', Validators.required))
-  }
-
-  removeControlTime2(control) {
-    this.OpenTimewed--
-    this.myTimeFormwed.removeControl(control.key)
-    //this.add = false
-  }
-
-  addControltime3() {
-    this.OpenTimethurs++
-    this.myTimeFormthurs.addControl('OpenTimewed' + this.OpenTimethurs, new FormControl('', Validators.required))
-  }
-  removeControlTime3(control) {
-    this.OpenTimethurs--
-    this.myTimeFormthurs.removeControl(control.key)
-
-  }
-
-  addControltime4() {
-    this.OpenTimefri++
-    this.myTimeFormfri.addControl('OpenTimewed' + this.OpenTimefri, new FormControl('', Validators.required))
-  }
-  removeControlTime4(control) {
-    this.OpenTimefri--
-    this.myTimeFormfri.removeControl(control.key)
-
-  }
-
-  addControltime5() {
-    this.OpenTimesat++
-    this.myTimeFormsat.addControl('OpenTimewed' + this.OpenTimesat, new FormControl('', Validators.required))
-  }
-  removeControlTime5(control) {
-    this.OpenTimesat--
-    this.myTimeFormsat.removeControl(control.key)
-
-  }
-
-  addControltime6() {
-    this.OpenTimesun++
-    this.myTimeFormsun.addControl('OpenTimewed' + this.OpenTimesun, new FormControl('', Validators.required))
-  }
-  removeControlTime6(control) {
-    this.OpenTimesun--
-    this.myTimeFormsun.removeControl(control.key)
-
-  }
 
   onSelecteCheckBox(e) {
     console.log('checkbox event', e)
@@ -408,11 +314,6 @@ export class RegistrationPage implements OnInit {
       // whatsappnumber: this.user.whatsappnumber,
     }
 
-    /*this.firestore.update('users', client.id, client).then(res => 
-      {
-      //console.log('result', res);
-      this.router.navigate(['/home']);
-    });*/
     this.api.updateprofile(this.userProvide.loggedUser.id,client).subscribe(async res=>{
       console.log('hours', res);
       this.userProvide.setLoggedInUser(client);
@@ -423,12 +324,26 @@ export class RegistrationPage implements OnInit {
  async savehours(slides){
     const OpeningTime={
       Monday: this.value2,
+      Monday_shift1:this.value7,
+      Monday_shift2:this.value8,
       Tusday: this.value3,
+      Tusday_shift1:this.value9,
+      Tusday_shift2:this.value10,
       Wednesday: this.value1,
+      Wed_shift1: this.value11,
+      Wed_shift2: this.value12,
       Thursday: this.value0,
+      Thurs_shift1:this.value13,
+      Thurs_shift2:this.value14,
       Friday: this.value4,
+      fri_shift1:this.value15,
+      fri_shift2:this.value16,
       saturday: this.value5,
-      Sunday: this.value6
+      satu_shift1: this.value17,
+      satu_shift2: this.value18,
+      Sunday: this.value6,
+      sun_shift1: this.value19,
+      sun_shift2: this.value20,
     }
     console.log('opening Time', OpeningTime);
     this.api.updateprofile(this.userProvide.loggedUser.id, { OpeningHours : OpeningTime}).subscribe(async res=>{
@@ -439,7 +354,7 @@ export class RegistrationPage implements OnInit {
     toast.present();
   }
 
-async phoneStorage(slides){
+   async phoneStorage(slides){
     const numberstore={
       phone:this.user.phone,
       phone2:this.user.phone2,
@@ -555,28 +470,78 @@ async phoneStorage(slides){
     });
   }
 
-addControl() {
-    // this.user.phone.push({ value: '' })
-    if (this.phoneNumber >= 4) {
-     // alert('Oops! Only 5 Numbers are allowed.')
-    }
-    else {
-      // this.phoneNumber++;
-      this.phoneNumber = this.phoneNumber + 1
-      this.myForm.addControl('phoneNumber' + this.phoneNumber, new FormControl('', Validators.required));
-    }
-    console.log('phnone numbers', this.phoneNumber)
-  }
-  removeControl(control) {
-    // this.phoneNumber--;
-    this.phoneNumber = this.phoneNumber - 1
-    this.myForm.removeControl(control.key);
-    //this.user.phone.splice(i, 1)
+
+  //hideform
+  TimeHideForm() {
+    this.time = !this.time;
   }
 
-  getphonenumber(e){
-    console.log('numbersss',e)
+  TimeHideForm1(){
+    this.timemon = false;
   }
+  TimeHideForm1mon(){
+    this.timemon = true;
+  }
+
+  TimeHideForm2(){
+    this.time1 = !this.time1;
+  }
+  TimeHideForm3(){
+    this.timeTus= false;
+  }
+  TimeHideForm3tus(){
+    this.timeTus= true;
+  }
+
+  TimeHideForm4(){
+    this.time2= !this.time2;
+  }
+  TimeHideForm5(){
+    this.timeWed= false;
+  }
+  TimeHideForm5wed(){
+    this.timeWed= true;
+  }
+
+  TimeHideForm6(){
+    this.time3= !this.time3;
+  }
+  TimeHideForm7(){
+    this.timeThus = false;
+  }
+  TimeHideForm7thurs(){
+    this.timeThus = true;
+  }
+
+  TimeHideForm8(){
+    this.time4 =!this.time4
+  }
+  TimeHideForm9(){
+    this.timeFri =false;
+  }
+  TimeHideForm9fri(){
+    this.timeFri =true
+  }
+
+  TimeHideForm10(){
+    this.time5 =!this.time5
+  }
+  TimeHideForm11(){
+    this.timeSat =false;
+  }
+  TimeHideForm11sat(){
+    this.timeSat =true
+  }
+  TimeHideForm12(){
+    this.time6 =!this.time6
+  }
+  TimeHideForm13(){
+    this.timeSun =false;
+  }
+  TimeHideForm13sun(){
+    this.timeSun =true;
+  }
+  
   addPhoto() {
     this.presentActionSheet()
   }
@@ -928,6 +893,81 @@ addControl() {
       options.push({
         text: this.timeget[columIndex][i % this.numOptions],
         value6: i
+      })
+    }
+    return options;
+  }
+
+  
+
+  async Mondaytime1(day: string) {
+    let options: PickerOptions = {
+      buttons: [
+        {
+          text: "Cancel",
+          role: 'cancel',
+        },
+        {
+          text: 'Ok',
+          handler: (value2: any) => {
+            console.log(value2);
+            if(day === 'monEve'){
+             this.value7 = value2['col -0'].text + '-' + value2['col -1'].text;
+            //  this.value7;
+            }if(day === 'monNight'){
+              this.value8 = value2['col -0'].text + '-' + value2['col -1'].text;
+            }if(day === 'tusEve'){
+              this.value9 = value2['col -0'].text + '-' + value2['col -1'].text;
+            }if(day === 'tusNight'){
+              this.value10 = value2['col -0'].text + '-' + value2['col -1'].text;
+            }if(day === 'wedEve'){
+              this.value11 = value2['col -0'].text + '-' + value2['col -1'].text;
+            }if(day === 'wedNight'){
+              this.value12 = value2['col -0'].text + '-' + value2['col -1'].text;
+            }if(day === 'thurEve'){
+              this.value13 = value2['col -0'].text + '-' + value2['col -1'].text;
+            }
+            if(day === 'thurNight'){
+              this.value14 = value2['col -0'].text + '-' + value2['col -1'].text;
+             //  this.value7;
+             }if(day === 'friEve'){
+               this.value15 = value2['col -0'].text + '-' + value2['col -1'].text;
+             }if(day === 'friNight'){
+               this.value16 = value2['col -0'].text + '-' + value2['col -1'].text;
+             }if(day === 'satEve'){
+               this.value17 = value2['col -0'].text + '-' + value2['col -1'].text;
+             }if(day === 'satNight'){
+               this.value18 = value2['col -0'].text + '-' + value2['col -1'].text;
+             }if(day === 'sunEve'){
+               this.value19 = value2['col -0'].text + '-' + value2['col -1'].text;
+             }if(day === 'sunNight'){
+               this.value20 = value2['col -0'].text + '-' + value2['col -1'].text;
+             }
+          }
+        }
+      ],
+      columns: this.getcolumnsmon1()
+    };
+    let picker = await this.pickercontrl.create(options);
+    picker.present()
+  }
+
+  getcolumnsmon1() {
+    let columns = []
+    for (let i = 0; i < this.numColumns; i++) {
+      columns.push({
+        name: `col -${i}`,
+        options: this.getColumnOptionsmon1(i)
+      })
+    }
+    return columns;
+  }
+  getColumnOptionsmon1(columIndex: number) {
+    let options = []
+    for (let i = 0; i < this.numOptions; i++) {
+      options.push({
+        text: this.timeget[columIndex][i % this.numOptions],
+        value2: i
       })
     }
     return options;

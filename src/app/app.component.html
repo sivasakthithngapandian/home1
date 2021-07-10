@@ -59,6 +59,13 @@
                         </div>
                     </ion-menu-toggle>
                 </ion-list>
+                <ion-footer>
+                    <div class="center">
+                        <ion-button class="btnLogout" shape="round" (click)="delete()">
+                         <ion-icon name="trash" slot="start" style="size: 35px; color: white;"></ion-icon>Delete
+                        </ion-button>
+                    </div>
+                </ion-footer>
             </ion-content>
         </ion-menu>
         <ion-router-outlet [swipeGesture]="false" id="main"></ion-router-outlet>

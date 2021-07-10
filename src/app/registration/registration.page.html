@@ -423,19 +423,56 @@
                         <ion-checkbox value="Monday" checked="false" (ionChange)="onSelecteCheckBox($event)" slot="start">
                         </ion-checkbox>
                     </ion-item>
-                   
-                    
+                
                         <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 20px;">
                             <ion-input *ngIf="checked" size="4" class="form-control" (click)="Mondaytime()" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
                                 {{value2}}
                             </ion-input>
-                           </div>
-                    
-                    <div *ngIf="!checked" class="d-flex align-items-center">
-                        <ion-label style="font-size: 12px;font-weight: 600; padding-left: 2px;">Closed</ion-label>
-                    </div>
-                </ion-row>
+                        </div>
 
+                        <div *ngIf="!checked" class="d-flex align-items-center">
+                            <ion-label style="font-size: 12px;font-weight: 600; padding-left: 2px;">Closed</ion-label>
+                        </div>
+                    <ion-col col-6></ion-col>
+                        
+                        <div class="addbutton d-flex align-items-center flex-column justify-content-center">
+                            <ion-icon *ngIf="time" name="add-outline" (click)="TimeHideForm()"></ion-icon>
+                            <ion-icon *ngIf="!time" name="add-outline" (click)="TimeHideForm1()"></ion-icon>
+                        </div>
+                    </ion-row>
+
+                <ion-row>
+                    <ion-col col-6></ion-col>
+                   <ion-col col-6>
+                       <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 20px;">
+                          <ion-input *ngIf="!time" size="4" class="form-control" (click)="Mondaytime1('monEve')" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                              {{value7}} 
+                          </ion-input>
+                      </div> 
+                   </ion-col> 
+                   <ion-col col-6>
+                        <div (click)="TimeHideForm()">
+                          <ion-icon name="close-outline" *ngIf="!time"></ion-icon>
+                        </div>
+                    </ion-col> 
+               </ion-row>
+
+               <ion-row>
+                <ion-col col-6></ion-col>
+               <ion-col col-6>
+                   <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 20px;">
+                      <ion-input *ngIf="!timemon" size="4" class="form-control" (click)="Mondaytime1('monNight')" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                          {{value8}} 
+                      </ion-input>
+                  </div> 
+               </ion-col> 
+               <ion-col col-6>
+                <div (click)="TimeHideForm1mon()">
+                <ion-icon name="close-outline" *ngIf="!timemon"></ion-icon>
+                </div>
+               </ion-col>
+           </ion-row>
+               <!-- monday -->
 
                 <ion-row>
                     <ion-item lines="none" class="d-flex align-items-center justify-content-center">
@@ -450,11 +487,48 @@
                             </ion-input>
                             </div>
 
-
                     <div *ngIf="!checked1" class="d-flex align-items-center">
                         <ion-label style="font-size: 12px;font-weight: 600;padding-left: 2px;">Closed</ion-label>
                     </div>
+
+                    <div class="addbutton d-flex align-items-center flex-column justify-content-center">
+                        <ion-icon *ngIf="time1" name="add-outline" (click)="TimeHideForm2()"></ion-icon>
+                        <ion-icon *ngIf="!time1" name="add-outline" (click)="TimeHideForm3()"></ion-icon>
+                    </div>
                 </ion-row>
+
+                <ion-row>
+                    <ion-col col-6></ion-col>
+                   <ion-col col-6>
+                       <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 20px;">
+                          <ion-input *ngIf="!time1" size="4" class="form-control" (click)="Mondaytime1('tusEve')" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                              {{value9}} 
+                          </ion-input>
+                      </div> 
+                   </ion-col> 
+                   <ion-col col-6>
+                        <div (click)="TimeHideForm2()">
+                          <ion-icon name="close-outline" *ngIf="!time1"></ion-icon>
+                        </div>
+                    </ion-col> 
+               </ion-row>
+               <ion-row>
+                <ion-col col-6></ion-col>
+               <ion-col col-6>
+                   <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 20px;">
+                      <ion-input *ngIf="!timeTus" size="4" class="form-control" (click)="Mondaytime1('tusNight')" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                          {{value10}} 
+                      </ion-input>
+                   </div> 
+               </ion-col> 
+               <ion-col col-6>
+                <div (click)="TimeHideForm3tus()">
+                <ion-icon name="close-outline" *ngIf="!timeTus"></ion-icon>
+                </div>
+               </ion-col>
+           </ion-row>
+           <!-- tuesday -->
+
                 <ion-row>
                     <ion-item lines="none" class="d-flex align-items-center">
                         <ion-label style="font-size: 12px;font-weight: 600;">Wednesday</ion-label>
@@ -462,18 +536,54 @@
                         </ion-checkbox>
                     </ion-item>
 
-                        <div class="d-flex justify-content-between align-items-center" *ngFor="let control of myTimeFormwed.controls | keyvalue; let i=index" style="padding-right: 2px; padding-left: 1px;">
+                        <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 1px;">
 
                             <ion-input *ngIf="checked2" size="4" class="form-control" (click)="wednesdaytime()" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
                                 {{value1}}
                             </ion-input>
                         </div>
-                
 
                     <div *ngIf="!checked2" class="d-flex align-items-center">
                         <ion-label style="font-size: 12px;font-weight: 600;">Closed</ion-label>
                     </div>
+
+                    <div class="addbutton d-flex align-items-center flex-column justify-content-center">
+                        <ion-icon *ngIf="time2" name="add-outline" (click)="TimeHideForm4()"></ion-icon>
+                        <ion-icon *ngIf="!time2" name="add-outline" (click)="TimeHideForm5()"></ion-icon>
+                    </div>
                 </ion-row>
+
+                <ion-row>
+                    <ion-col col-6></ion-col>
+                   <ion-col col-6>
+                       <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 20px;">
+                          <ion-input *ngIf="!time2" size="4" class="form-control" (click)="Mondaytime1('wedEve')" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                              {{value11}} 
+                          </ion-input>
+                      </div> 
+                   </ion-col> 
+                   <ion-col col-6>
+                        <div (click)="TimeHideForm4()">
+                          <ion-icon name="close-outline" *ngIf="!time2"></ion-icon>
+                        </div>
+                    </ion-col> 
+               </ion-row>
+               <ion-row>
+                <ion-col col-6></ion-col>
+               <ion-col col-6>
+                   <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 20px;">
+                      <ion-input *ngIf="!timeWed" size="4" class="form-control" (click)="Mondaytime1('wedNight')" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                          {{value12}} 
+                      </ion-input>
+                  </div> 
+               </ion-col> 
+               <ion-col col-6>
+                <div (click)="TimeHideForm5wed()">
+                <ion-icon name="close-outline" *ngIf="!timeWed"></ion-icon>
+                </div>
+               </ion-col>
+           </ion-row>
+           <!-- wednesday -->
 
                 <ion-row>
                     <ion-item lines="none" class="d-flex align-items-center">
@@ -485,14 +595,49 @@
                             <ion-input *ngIf="checked3" size="4" class="form-control" (click)="thursdaytime()" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
                                 {{value0}}
                             </ion-input>
-                          
                         </div>
             
-
                     <div *ngIf="!checked3" class="d-flex align-items-center">
                         <ion-label style="font-size: 12px;font-weight: 600; padding-left: 2px;">Closed</ion-label>
                     </div>
+
+                    <div class="addbutton d-flex align-items-center flex-column justify-content-center">
+                        <ion-icon *ngIf="time3" name="add-outline" (click)="TimeHideForm6()"></ion-icon>
+                        <ion-icon *ngIf="!time3" name="add-outline" (click)="TimeHideForm7()"></ion-icon>
+                    </div>
                 </ion-row>
+
+            <ion-row>
+                <ion-col col-6></ion-col>
+               <ion-col col-6>
+                   <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 20px;">
+                      <ion-input *ngIf="!time3" size="4" class="form-control" (click)="Mondaytime1('thurEve')" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                          {{value13}} 
+                      </ion-input>
+                  </div> 
+               </ion-col> 
+               <ion-col col-6>
+                    <div (click)="TimeHideForm6()">
+                      <ion-icon name="close-outline" *ngIf="!time3"></ion-icon>
+                    </div>
+                </ion-col> 
+           </ion-row>
+           <ion-row>
+            <ion-col col-6></ion-col>
+           <ion-col col-6>
+               <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 20px;">
+                  <ion-input *ngIf="!timeThus" size="4" class="form-control" (click)="Mondaytime1('thurNight')" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                      {{value14}} 
+                  </ion-input>
+              </div> 
+           </ion-col> 
+           <ion-col col-6>
+            <div (click)="TimeHideForm7thurs()">
+            <ion-icon name="close-outline" *ngIf="!timeThus"></ion-icon>
+            </div>
+           </ion-col>
+       </ion-row>
+<!-- thursday -->
                 <ion-row>
                     <ion-item lines="none" class="d-flex align-items-center">
                         <ion-label style="font-size: 12px;font-weight: 600;">Friday</ion-label>
@@ -507,12 +652,46 @@
                          
                         </div>
             
-
                     <div *ngIf="!checked4" class="d-flex align-items-center">
                         <ion-label style="font-size: 12px;font-weight: 600; padding-left: 2px;">Closed</ion-label>
                     </div>
+                    <div class="addbutton d-flex align-items-center flex-column justify-content-center">
+                        <ion-icon *ngIf="time4" name="add-outline" (click)="TimeHideForm8()"></ion-icon>
+                        <ion-icon *ngIf="!time4" name="add-outline" (click)="TimeHideForm9()"></ion-icon>
+                    </div>
                 </ion-row>
 
+                <ion-row>
+                    <ion-col col-6></ion-col>
+                   <ion-col col-6>
+                       <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 20px;">
+                          <ion-input *ngIf="!time4" size="4" class="form-control" (click)="Mondaytime1('friEve')" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                              {{value15}} 
+                          </ion-input>
+                      </div> 
+                   </ion-col> 
+                   <ion-col col-6>
+                        <div (click)="TimeHideForm8()">
+                          <ion-icon name="close-outline" *ngIf="!time4"></ion-icon>
+                        </div>
+                    </ion-col> 
+               </ion-row>
+               <ion-row>
+                <ion-col col-6></ion-col>
+               <ion-col col-6>
+                   <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 20px;">
+                      <ion-input *ngIf="!timeFri" size="4" class="form-control" (click)="Mondaytime1('friNight')" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                          {{value16}} 
+                      </ion-input>
+                  </div> 
+               </ion-col> 
+               <ion-col col-6>
+                <div (click)="TimeHideForm9fri()">
+                <ion-icon name="close-outline" *ngIf="!timeFri"></ion-icon>
+                </div>
+               </ion-col>
+           </ion-row>
+  <!-- friday -->
                 <ion-row>
                     <ion-item lines="none" class="d-flex align-items-center">
                         <ion-label style="font-size: 12px;font-weight: 600;">Saturday</ion-label>
@@ -529,7 +708,44 @@
                     <div *ngIf="!checked5" class="d-flex align-items-center">
                         <ion-label style="font-size: 12px;font-weight: 600; padding-left: 2px;">Closed</ion-label>
                     </div>
+
+                    <div class="addbutton d-flex align-items-center flex-column justify-content-center">
+                        <ion-icon *ngIf="time5" name="add-outline" (click)="TimeHideForm10()"></ion-icon>
+                        <ion-icon *ngIf="!time5" name="add-outline" (click)="TimeHideForm11()"></ion-icon>
+                    </div>
                 </ion-row>
+
+                <ion-row>
+                    <ion-col col-6></ion-col>
+                   <ion-col col-6>
+                       <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 20px;">
+                          <ion-input *ngIf="!time5" size="4" class="form-control" (click)="Mondaytime1('satEve')" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                              {{value17}} 
+                          </ion-input>
+                      </div> 
+                   </ion-col> 
+                   <ion-col col-6>
+                        <div (click)="TimeHideForm10()">
+                          <ion-icon name="close-outline" *ngIf="!time5"></ion-icon>
+                        </div>
+                    </ion-col> 
+               </ion-row>
+               <ion-row>
+                <ion-col col-6></ion-col>
+               <ion-col col-6>
+                   <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 20px;">
+                      <ion-input *ngIf="!timeSat" size="4" class="form-control" (click)="Mondaytime1('satNight')" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                          {{value18}} 
+                      </ion-input>
+                  </div> 
+               </ion-col> 
+               <ion-col col-6>
+                <div (click)="TimeHideForm11sat()">
+                <ion-icon name="close-outline" *ngIf="!timeSat"></ion-icon>
+                </div>
+               </ion-col>
+           </ion-row>
+           <!-- saturday -->
 
                 <ion-row>
                     <ion-item lines="none" class="d-flex align-items-center">
@@ -547,7 +763,44 @@
                     <div *ngIf="!checked6" class="d-flex align-items-center">
                         <ion-label style="font-size: 12px;font-weight: 600;padding-left: 1px;">Closed</ion-label>
                     </div>
+
+                    <div class="addbutton d-flex align-items-center flex-column justify-content-center">
+                        <ion-icon *ngIf="time6" name="add-outline" (click)="TimeHideForm12()"></ion-icon>
+                        <ion-icon *ngIf="!time6" name="add-outline" (click)="TimeHideForm13()"></ion-icon>
+                    </div>
                 </ion-row>
+
+                <ion-row>
+                    <ion-col col-6></ion-col>
+                   <ion-col col-6>
+                       <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 20px;">
+                          <ion-input *ngIf="!time6" size="4" class="form-control" (click)="Mondaytime1('sunEve')" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                              {{value19}} 
+                          </ion-input>
+                      </div> 
+                   </ion-col> 
+                   <ion-col col-6>
+                        <div (click)="TimeHideForm12()">
+                          <ion-icon name="close-outline" *ngIf="!time6"></ion-icon>
+                        </div>
+                    </ion-col> 
+               </ion-row>
+               <ion-row>
+                <ion-col col-6></ion-col>
+               <ion-col col-6>
+                   <div class="d-flex justify-content-between align-items-center" style="padding-right: 2px; padding-left: 20px;">
+                      <ion-input *ngIf="!timeSun" size="4" class="form-control" (click)="Mondaytime1('sunNight')" style="padding-bottom: 5px;padding-top: 5px;width: 82px;font-size: 10px;height: 20px;">
+                          {{value20}} 
+                      </ion-input>
+                  </div> 
+               </ion-col> 
+               <ion-col col-6>
+                <div (click)="TimeHideForm13sun()">
+                <ion-icon name="close-outline" *ngIf="!timeSun"></ion-icon>
+                </div>
+               </ion-col>
+           </ion-row>
+           <!-- sunday -->
 
             </ion-content>
             <ion-footer class="ion-no-border">
@@ -562,7 +815,6 @@
             <ion-content>
                 <ion-card class="register">
                     <ion-label position="floating" class="greenColor"> Please add your Shop Photos</ion-label>
-
 
             <div class="">
                 <img src="assets/Add_Photo.png" alt="socialmedia-logo" (click)="addPhoto()">

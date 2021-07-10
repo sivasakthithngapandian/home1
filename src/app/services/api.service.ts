@@ -134,7 +134,12 @@ export class ApiService {
     return from (this.firestore.updateSubcollection('users','service',id,data.id, data));
   }
 
-
+  removeService(id,data): Observable<any>{
+    return from (this.firestore.removeField('users','service',id, data.id,data));
+  }
+  removeCategoryServices(id,data): Observable<any>{
+    return from (this.firestore.removeInnerId('users',id,'services',data,'categories'))
+  }
 
   addObject(id, obj: Observable<any>){
       return new Observable((observer) => {
