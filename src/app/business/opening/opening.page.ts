@@ -46,6 +46,22 @@ export class OpeningPage implements OnInit {
   value5 = '9:00-18:00';
   value6 = '9:00-18:00';
 
+  value7 = 'closed';
+  value8 = 'closed';
+  value9 = 'closed';
+  value10 = 'closed';
+  value11 = 'closed';
+  value12 = 'closed';
+  value13 = 'closed';
+
+  value14 = 'closed';
+  value15 = 'closed';
+  value16 = 'closed';
+  value17 = 'closed';
+  value18 = 'closed';
+  value19 = 'closed';
+  value20 = 'closed';
+
   checked = false;
   checked1 = false;
   checked2 = false;
@@ -53,6 +69,21 @@ export class OpeningPage implements OnInit {
   checked4 = false;
   checked5 = false;
   checked6 = false;
+
+  time= true;
+  timemon= true;
+  time1= true;
+  timeTus= true;
+  time2= true;
+  timeWed= true;
+  time3= true;
+  timeThus= true;
+  time4= true;
+  timeFri= true;
+  time5= true;
+  timeSat= true;
+  time6= true;
+  timeSun= true;
 
   public openingTime: any;
 
@@ -200,6 +231,91 @@ export class OpeningPage implements OnInit {
     return options;
   }
 
+  async Mondaytime1(day: string) {
+    let options: PickerOptions = {
+      buttons: [
+        {
+          text: "Cancel",
+          role: 'cancel',
+        },
+        {
+          text: 'Ok',
+          handler: (value2: any) => {
+            console.log(value2);
+            if(day === 'monEve'){
+             this.value7 = value2['col -0'].text + '-' + value2['col -1'].text;
+             this.openingTime.OpeningHours.Monday_shift1 = this.value7;
+            }if(day === 'monNight'){
+              this.value8 = value2['col -0'].text + '-' + value2['col -1'].text;
+              this.openingTime.OpeningHours.Monday_shift2 = this.value8;
+            }if(day === 'tusEve'){
+              this.value9 = value2['col -0'].text + '-' + value2['col -1'].text;
+              this.openingTime.OpeningHours. Tusday_shift1 = this.value9;
+            }if(day === 'tusNight'){
+              this.value10 = value2['col -0'].text + '-' + value2['col -1'].text;
+              this.openingTime.OpeningHours. Tusday_shift2 = this.value10;
+            }if(day === 'wedEve'){
+              this.value11 = value2['col -0'].text + '-' + value2['col -1'].text;
+              this.openingTime.OpeningHours.Wed_shift1 = this.value11;
+            }if(day === 'wedNight'){
+              this.value12 = value2['col -0'].text + '-' + value2['col -1'].text;
+              this.openingTime.OpeningHours.Wed_shift2 = this.value12;
+            }if(day === 'thurEve'){
+              this.value13 = value2['col -0'].text + '-' + value2['col -1'].text;
+              this.openingTime.OpeningHours.Thurs_shift1 = this.value13;
+            }
+            if(day === 'thurNight'){
+              this.value14 = value2['col -0'].text + '-' + value2['col -1'].text;
+              this.openingTime.OpeningHours.Thurs_shift2 = this.value14;
+             }if(day === 'friEve'){
+               this.value15 = value2['col -0'].text + '-' + value2['col -1'].text;
+              this.openingTime.OpeningHours.fri_shift1 = this.value15;
+             }if(day === 'friNight'){
+               this.value16 = value2['col -0'].text + '-' + value2['col -1'].text;
+              this.openingTime.OpeningHours.fri_shift2 = this.value16;
+             }if(day === 'satEve'){
+               this.value17 = value2['col -0'].text + '-' + value2['col -1'].text;
+              this.openingTime.OpeningHours.satu_shift1 = this.value17;
+             }if(day === 'satNight'){
+               this.value18 = value2['col -0'].text + '-' + value2['col -1'].text;
+              this.openingTime.OpeningHours.satu_shift2 = this.value18;
+             }if(day === 'sunEve'){
+               this.value19 = value2['col -0'].text + '-' + value2['col -1'].text;
+              this.openingTime.OpeningHours.sun_shift1 = this.value19;
+             }if(day === 'sunNight'){
+               this.value20 = value2['col -0'].text + '-' + value2['col -1'].text;
+              this.openingTime.OpeningHours.sun_shift2 = this.value20;
+             }
+          }
+        }
+      ],
+      columns: this.getcolumnsmon()
+    };
+    let picker = await this.pickerCtrl.create(options);
+    picker.present()
+  }
+
+  getcolumnsmond() {
+    let columns = []
+    for (let i = 0; i < this.numColumns; i++) {
+      columns.push({
+        name: `col -${i}`,
+        options: this.getColumnOptionsmond(i)
+      })
+    }
+    return columns;
+  }
+  getColumnOptionsmond(columIndex: number) {
+    let options = []
+    for (let i = 0; i < this.numOptions; i++) {
+      options.push({
+        text: this.timeget[columIndex][i % this.numOptions],
+        value2: i
+      })
+    }
+    return options;
+  }
+
   async save(){
    const load = await this.userProvider.createLoader('Updating...');
    load.present();
@@ -211,5 +327,158 @@ export class OpeningPage implements OnInit {
 
   back() {
     this.router.navigate(['/home'])
+  }
+
+  TimeHideForm(day:string) {
+    this.time = !this.time;
+    // if(!this.time===true){
+    //   this.value7="closed"
+    // }else{
+    //   this.value7="closed"
+    // }
+    if(day === 'monEvn') {
+      this.openingTime.OpeningHours.Monday_shift1=this.time === false ? 'closed' :   this.value7;
+   }
+  }
+
+  TimeHideForm1(){
+    this.timemon = false;
+    if(!this.timemon===true){
+       this.value8=this.openingTime.OpeningHours.Monday_shift2
+    }
+  }
+  TimeHideForm1mon(){
+    this.timemon = true;
+    if(!this.timemon===false){
+      this.value8="closed"
+    }
+  }
+
+  TimeHideForm2(){
+    this.time1 = !this.time1;
+    if(!this.time1===true){
+      this.value9="18.00-21.00"
+    }else{
+      this.value9="closed"
+    }
+  }
+  TimeHideForm3(){
+    this.timeTus= false;
+    if(!this.timeTus===true){
+      this.value10='21.00-24.00'
+   }
+  }
+  TimeHideForm3tus(){
+    this.timeTus= true;
+    if(!this.timeTus===false){
+      this.value10="closed"
+    }
+  }
+
+  TimeHideForm4(){
+    this.time2= !this.time2;
+    if(!this.time2===true){
+      this.value11="18.00-21.00"
+    }else{
+      this.value11="closed"
+    }
+  }
+  TimeHideForm5(){
+    this.timeWed= false;
+    if(!this.timeWed===true){
+      this.value12='21.00-24.00'
+   }
+  }
+  TimeHideForm5wed(){
+    this.timeWed= true;
+    if(!this.timeWed===false){
+      this.value12="closed"
+    }
+  }
+
+  TimeHideForm6(){
+    this.time3= !this.time3;
+    if(!this.time3===true){
+      this.value13="18.00-21.00"
+    }else{
+      this.value13="closed"
+    }
+  }
+  TimeHideForm7(){
+    this.timeThus = false;
+    if(!this.timeThus===true){
+      this.value14='21.00-24.00'
+   }
+  }
+  TimeHideForm7thurs(){
+    this.timeThus = true;
+    if(!this.timeThus===false){
+      this.value14="closed"
+    }
+  }
+
+  TimeHideForm8(){
+    this.time4 =!this.time4
+    if(!this.time4===true){
+      this.value15="18.00-21.00"
+    }else{
+      this.value15="closed"
+    }
+  }
+  TimeHideForm9(){
+    this.timeFri =false;
+    if(!this.timeFri===true){
+      this.value16='21.00-24.00'
+   }
+  }
+  TimeHideForm9fri(){
+    this.timeFri =true
+    if(!this.timeFri===false){
+      this.value16="closed"
+    }
+  }
+
+  TimeHideForm10(){
+    this.time5 =!this.time5
+    if(!this.time5===true){
+      this.value17="18.00-21.00"
+    }else{
+      this.value17="closed"
+    }
+  }
+  TimeHideForm11(){
+    this.timeSat =false;
+    if(!this.timeSat===true){
+      this.value18='21.00-24.00'
+   }
+  }
+  TimeHideForm11sat(){
+    this.timeSat =true
+    if(!this.timeSat===false){
+      this.value18="closed"
+    }
+  }
+  TimeHideForm12(day:string){
+    this.time6 =!this.time6
+    // if(!this.time6===true){
+    //   this.value19="18.00-21.00"
+    // }else{
+    //   this.value19="closed"
+    // }
+    if(day === 'sunEvn') {
+      this.openingTime.OpeningHours.Monday_shift1=!this.time6 === false ? 'closed' :   this.value19;
+   }
+  }
+  TimeHideForm13(){
+    this.timeSun =false;
+    if(!this.timeSun===true){
+      this.value20='21.00-24.00'
+   }
+  }
+  TimeHideForm13sun(){
+    this.timeSun =true;
+    if(!this.timeSun===false){
+      this.value20="closed"
+    }
   }
 }
