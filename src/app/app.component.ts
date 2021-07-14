@@ -88,15 +88,21 @@ export class AppComponent implements OnInit {
          {
           text: 'Yes',
           handler: async(datang:any) => {
-            this.firestore.delete('users',this.userProvide.loggedUser.id).then(res=>{
-              this.userProvide.goToNew('/login');
-             });
+            this.firestore.deletecollection('users', this.userProvide.loggedUser.id,'services').then(res=>{
+              this.firestore.deletecollections('users',this.userProvide.loggedUser.id,'staff').then(use=>{
+                // this.firestore.deletecollection('users', this.userProvide.loggedUser.id,'service').then(respon=>{
+                  this.firestore.delete('users',this.userProvide.loggedUser.id).then(res=>{
+                    this.userProvide.goToNew('/login');
+                   });
+                // })
+              })
+            })
             await alert.dismiss();
           }
-        }
+        }    
       ]
     });
-    await alert.present();
+    await alert.present();      
    }
   // delete(){
   //   this.firestore.delete('users',this.userProvide.loggedUser.id).then(res=>{

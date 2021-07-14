@@ -144,6 +144,8 @@ export class OpeningPage implements OnInit {
       this.value4 = this.openingTime.OpeningHours.Friday;
       this.value5 = this.openingTime.OpeningHours.saturday;
       this.value6 = this.openingTime.OpeningHours.Sunday;
+
+      this.value7 = this.openingTime.OpeningHours.Monday_shift1;
       await load.dismiss();
     });
   }
@@ -250,10 +252,10 @@ export class OpeningPage implements OnInit {
               this.openingTime.OpeningHours.Monday_shift2 = this.value8;
             }if(day === 'tusEve'){
               this.value9 = value2['col -0'].text + '-' + value2['col -1'].text;
-              this.openingTime.OpeningHours. Tusday_shift1 = this.value9;
+              this.openingTime.OpeningHours.Tusday_shift1 = this.value9;
             }if(day === 'tusNight'){
               this.value10 = value2['col -0'].text + '-' + value2['col -1'].text;
-              this.openingTime.OpeningHours. Tusday_shift2 = this.value10;
+              this.openingTime.OpeningHours.Tusday_shift2 = this.value10;
             }if(day === 'wedEve'){
               this.value11 = value2['col -0'].text + '-' + value2['col -1'].text;
               this.openingTime.OpeningHours.Wed_shift1 = this.value11;
@@ -331,154 +333,117 @@ export class OpeningPage implements OnInit {
 
   TimeHideForm(day:string) {
     this.time = !this.time;
-    // if(!this.time===true){
-    //   this.value7="closed"
-    // }else{
-    //   this.value7="closed"
-    // }
+
     if(day === 'monEvn') {
-      this.openingTime.OpeningHours.Monday_shift1=this.time === false ? 'closed' :   this.value7;
+      this.openingTime.OpeningHours.Monday_shift1=!this.time === false ? 'closed' :   this.value7;
    }
   }
 
   TimeHideForm1(){
     this.timemon = false;
-    if(!this.timemon===true){
-       this.value8=this.openingTime.OpeningHours.Monday_shift2
-    }
+
   }
-  TimeHideForm1mon(){
+  TimeHideForm1mon(day:string){
     this.timemon = true;
-    if(!this.timemon===false){
-      this.value8="closed"
-    }
+    if(day === 'monNight') {
+      this.openingTime.OpeningHours.Monday_shift2=!this.timemon === false ? 'closed' :   this.value8;
+   }
   }
 
-  TimeHideForm2(){
+  TimeHideForm2(day:string){
     this.time1 = !this.time1;
-    if(!this.time1===true){
-      this.value9="18.00-21.00"
-    }else{
-      this.value9="closed"
-    }
+    if(day === 'tusEvn') {
+      this.openingTime.OpeningHours.Tusday_shift1=!this.time1 === false ? 'closed' :   this.value9;
+   }
   }
   TimeHideForm3(){
     this.timeTus= false;
-    if(!this.timeTus===true){
-      this.value10='21.00-24.00'
+  }
+  TimeHideForm3tus(day:string){
+    this.timeTus= true;
+    if(day === 'tusNight') {
+      this.openingTime.OpeningHours.Tusday_shift2=!this.timeTus === false ? 'closed' :   this.value10;
    }
   }
-  TimeHideForm3tus(){
-    this.timeTus= true;
-    if(!this.timeTus===false){
-      this.value10="closed"
-    }
-  }
 
-  TimeHideForm4(){
+  TimeHideForm4(day:string){
     this.time2= !this.time2;
-    if(!this.time2===true){
-      this.value11="18.00-21.00"
-    }else{
-      this.value11="closed"
-    }
+    if(day === 'wedEvn') {
+      this.openingTime.OpeningHours.Wed_shift1=!this.time2 === false ? 'closed' :   this.value11;
+   }
   }
   TimeHideForm5(){
     this.timeWed= false;
-    if(!this.timeWed===true){
-      this.value12='21.00-24.00'
+  }
+  TimeHideForm5wed(day:string){
+    this.timeWed= true;
+    if(day === 'wedNight') {
+      this.openingTime.OpeningHours.Wed_shift2=!this.timeWed === false ? 'closed' :   this.value12;
    }
   }
-  TimeHideForm5wed(){
-    this.timeWed= true;
-    if(!this.timeWed===false){
-      this.value12="closed"
-    }
-  }
 
-  TimeHideForm6(){
+  TimeHideForm6(day:string){
     this.time3= !this.time3;
-    if(!this.time3===true){
-      this.value13="18.00-21.00"
-    }else{
-      this.value13="closed"
-    }
+    if(day === 'thursEvn') {
+      this.openingTime.OpeningHours.Thurs_shift1=!this.time3 === false ? 'closed' :   this.value13;
+   }
   }
   TimeHideForm7(){
     this.timeThus = false;
-    if(!this.timeThus===true){
-      this.value14='21.00-24.00'
+  }
+  TimeHideForm7thurs(day:string){
+    this.timeThus = true;
+    if(day === 'thursngt') {
+      this.openingTime.OpeningHours.Thurs_shift2=!this.timeThus === false ? 'closed' :   this.value14;
    }
   }
-  TimeHideForm7thurs(){
-    this.timeThus = true;
-    if(!this.timeThus===false){
-      this.value14="closed"
-    }
-  }
 
-  TimeHideForm8(){
+  TimeHideForm8(day:string){
     this.time4 =!this.time4
-    if(!this.time4===true){
-      this.value15="18.00-21.00"
-    }else{
-      this.value15="closed"
-    }
+    if(day === 'friEvn') {
+      this.openingTime.OpeningHours.fri_shift1=!this.time4 === false ? 'closed' :   this.value15;
+   }
   }
   TimeHideForm9(){
     this.timeFri =false;
-    if(!this.timeFri===true){
-      this.value16='21.00-24.00'
+  }
+  TimeHideForm9fri(day:string){
+    this.timeFri =true
+    if(day === 'friNight') {
+      this.openingTime.OpeningHours.fri_shift2=!this.timeFri === false ? 'closed' :   this.value16;
    }
   }
-  TimeHideForm9fri(){
-    this.timeFri =true
-    if(!this.timeFri===false){
-      this.value16="closed"
-    }
-  }
 
-  TimeHideForm10(){
+  TimeHideForm10(day:string){
     this.time5 =!this.time5
-    if(!this.time5===true){
-      this.value17="18.00-21.00"
-    }else{
-      this.value17="closed"
-    }
+    if(day === 'satEvn') {
+      this.openingTime.OpeningHours.satu_shift1=!this.time5 === false ? 'closed' :   this.value17;
+   }
   }
   TimeHideForm11(){
     this.timeSat =false;
-    if(!this.timeSat===true){
-      this.value18='21.00-24.00'
+    
+  }
+  TimeHideForm11sat(day:string){
+    this.timeSat =true
+    if(day === 'satNight') {
+      this.openingTime.OpeningHours.satu_shift2=!this.timeSat === false ? 'closed' :   this.value18;
    }
   }
-  TimeHideForm11sat(){
-    this.timeSat =true
-    if(!this.timeSat===false){
-      this.value18="closed"
-    }
-  }
+
   TimeHideForm12(day:string){
     this.time6 =!this.time6
-    // if(!this.time6===true){
-    //   this.value19="18.00-21.00"
-    // }else{
-    //   this.value19="closed"
-    // }
     if(day === 'sunEvn') {
-      this.openingTime.OpeningHours.Monday_shift1=!this.time6 === false ? 'closed' :   this.value19;
+      this.openingTime.OpeningHours.sun_shift1=!this.time6 === false ? 'closed' :   this.value19;
    }
   }
   TimeHideForm13(){
     this.timeSun =false;
-    if(!this.timeSun===true){
-      this.value20='21.00-24.00'
-   }
   }
-  TimeHideForm13sun(){
+  TimeHideForm13sun(day:string){
     this.timeSun =true;
-    if(!this.timeSun===false){
-      this.value20="closed"
-    }
+    if(day === 'sunNight') {
+      this.openingTime.OpeningHours.sun_shift2=!this.timeSun === false ? 'closed' :   this.value19;
+   }
   }
 }

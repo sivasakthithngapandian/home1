@@ -59,6 +59,12 @@ export class FirestoreService {
   public delete<T extends BaseDatabaseModels>(collection: string, id: string): Promise<any> {
     return this.store.doc<T>(`${collection}/${id}`).delete();
   }
+  public deletecollection<T extends BaseDatabaseModels>(collection: string, id: string, subcollection: string): Promise<any> {
+    return this.store.doc<T>(`${collection}/${id}/${subcollection}`).delete();
+  }
+  public deletecollections<T extends BaseDatabaseModels>(collection: string, id: string, subCollectionName: string): Promise<any> {
+    return this.store.doc<T>(`${collection}/${id}/${subCollectionName}`).delete();
+  }
 
 
   public getdata<T extends BaseDatabaseModels>(collection: string, id: string, subCollectionName: string, document: Partial<T>): Observable<T[]> {
