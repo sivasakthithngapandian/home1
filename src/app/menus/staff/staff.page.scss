@@ -7,10 +7,12 @@ ion-fab-button {
 }
 
 ion-button {
-    --background: forestgreen;
-    margin-left: 65px;
-    margin-right: 65px;
-    margin-top: 20px;
+    //--background: forestgreen;
+    //margin-left: 65px;
+   // margin-right: 65px;
+   // margin-top: 20px;
+    color:forestgreen;
+    size: 12px;
 }
 ion-content{
     background-color: forestgreen;
@@ -83,4 +85,44 @@ ion-label{
     color: white;
     display: flex;
     justify-content: center;
+}
+
+ion-slides {
+    --text-align: center;
+    height: 100%;
+    color: forestgreen;
+    --bullet-background: gray;
+    --background-color:white;
+    --bullet-background-active: forestgreen;
+}
+
+ion-slider-pager {
+    --moz-list-bullet-color: forestgreen;
+    --background-color:white;
+}
+
+ion-slide {
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: white;
+    height: 100%;
+}
+
+
+#slides{
+    background: white;
+}
+
+.next {
+    font-family:sans-serif;
+    font-weight: 300;
+    align-self: flex-end;
+  
+}
+.btnSubmit{
+    --border-radius: 2.5vh;
+    --background: forestgreen;
+    color: white;
 }

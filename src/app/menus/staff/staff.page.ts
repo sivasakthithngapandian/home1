@@ -47,7 +47,13 @@ staffid:any;
     ]
   ]
 
-  value0 = 'Working Time';
+  value0 = '09:00-18:00';
+  value1 = '09:00-18:00';
+  value2 = '09:00-18:00';
+  value3 = '09:00-18:00';
+  value4 = '09:00-18:00';
+  value5 = '09:00-18:00';
+  value6 = '09:00-18:00';
 
   numColumns: number = 2;
   numOptions: number = 144;
@@ -86,6 +92,9 @@ staffid:any;
   public staffmember = [];
 
   staffmb = false;
+
+  public openingTime: any;
+
   constructor(private ngAuth: AngularFireAuth,
     private router: Router,
     private actionSheetCtrl :ActionSheetController,
@@ -94,10 +103,21 @@ staffid:any;
     private userProvideserv : UserproviderService,
     private api: ApiService) { }
 
-  ngOnInit() {
-    // this.servicedetails()
-    // this.service1details()
-    // this.getStaffData()
+ async ngOnInit() {
+    const load = await this.userProvideserv.createLoader('Loading...');
+    await load.present();
+    this.api.getUser().subscribe(async data => {
+      this.openingTime = data;
+      console.log("loggeed openinngTime", this.openingTime);
+      this.value0 = this.openingTime.OpeningHours.Monday;
+      this.value1 = this.openingTime.OpeningHours.Tusday;
+      this.value2 = this.openingTime.OpeningHours.Wednesday;
+      this.value3 = this.openingTime.OpeningHours.Thursday;
+      this.value4 = this.openingTime.OpeningHours.Friday;
+      this.value5 = this.openingTime.OpeningHours.saturday;
+      this.value6 = this.openingTime.OpeningHours.Sunday;
+      await load.dismiss();
+    });
     this.api.staffmember=[];
     this.api.staffdata=[];
     this.api.getaddstaff(this.userProvideserv.loggedUser.id).subscribe(use=>{
@@ -177,42 +197,31 @@ this.staffid = await this.userProvideserv.openCameraStaff();
     this.router.navigate(['/home'])
   }
 
-  // async delete(){
-  //     const actionsh = await this.actionsheet.create({
-  //       header: 'Albums',
-  //     cssClass: 'my-custom-class',
-  //     buttons: [{
-  //       text: 'Delete',
-  //       role: 'destructive',
-  //       icon: 'trash',
-  //       handler: () => {
-  //         console.log('Delete clicked');
-  //       } 
-  //     },
-  //     { text: 'Cancel', role: 'cancel' }]
-  //     })
-  //     await actionsh.present();
-  //     const {role}= await actionsh.onDidDismiss();
-  //     console.log('action sheet dismis', role);
-  // }
-  getStaffDetails() {
+  getStaffDetails(slides) {
 
     const staffInfo = {
       id: this.userProvideserv.loggedUser.id,
       staffid:this.staffid,
       staff_img:this.api.staff_img,
       staffName: this.staff.staffname,
-      worktime: this.value0,
-      phone: this.staff.phone,
-      service: this.staff.service
-      //serviceothers: this.service.ServiceName
- 
+     // worktime: this.value0,
+     phone: this.staff.phone,
+     service: this.staff.service,
+      OpeningHours: //this.openingTime.OpeningHours,
+      [ {Monday: this.value0 = this.openingTime.OpeningHours.Monday,
+        Tusday: this.value1 = this.openingTime.OpeningHours.Tusday,
+        Wednesday: this.value2 = this.openingTime.OpeningHours.Wednesday,
+        Thursday: this.value3 = this.openingTime.OpeningHours.Thursday,
+        Friday: this.value4 = this.openingTime.OpeningHours.Friday,
+        saturday: this.value5 = this.openingTime.OpeningHours.saturday,
+        Sunday: this.value6 = this.openingTime.OpeningHours.Sunday,}],
     }
     console.log('result', staffInfo)
     this.api.updateStaff(staffInfo.id, staffInfo).subscribe((response) => {
       console.log('response', response)
-    });
-      this.staffmb=false;
+    })
+    slides.slideNext();
+     // this.staffmb=false;
       this.api.getaddstaff(this.userProvideserv.loggedUser.id).subscribe(use=>{
         console.log('staff details',use);
          this.api.staffdata=use;
@@ -231,47 +240,103 @@ this.staffid = await this.userProvideserv.openCameraStaff();
     
   }
 
-  //workTime for staffs
-  async Durationtime() {
-    let options: PickerOptions = {
-      buttons: [
-        {
-          text: "Cancel",
-          role: 'cancel',
-        },
-        {
-          text: 'Ok',
-          handler: (value: any) => {
-            this.value0 = value['col -0'].text + '-' + value['col -1'].text;
-            console.log('value', this.value0);
+  onChangeEvent(event:any, day:string){
+    if(day === 'mon') {
+       this.openingTime.OpeningHours.Monday = event.detail.checked === false ? 'closed' :   this.value0;
+    }
+    if(day === 'tue') {
+      this.openingTime.OpeningHours.Tusday = event.detail.checked === false ? 'closed' :   this.value1;
+    }if(day === 'wed') {
+      this.openingTime.OpeningHours.Wednesday = event.detail.checked === false ? 'closed' :   this.value2;
+    }if(day === 'thu') {
+      this.openingTime.OpeningHours.Thursday = event.detail.checked === false ? 'closed' :   this.value3;
+    }if(day === 'fri') {
+      this.openingTime.OpeningHours.Friday = event.detail.checked === false ? 'closed' :   this.value4;
+    }if(day === 'sat') {
+      this.openingTime.OpeningHours.saturday = event.detail.checked === false ? 'closed' :   this.value5;
+    }if(day === 'sun') {
+      this.openingTime.OpeningHours.Sunday = event.detail.checked === false ? 'closed' :   this.value6; 
+    }
+}
+
+
+async Mondaytime(day: string) {
+  let options: PickerOptions = {
+    buttons: [
+      {
+        text: "Cancel",
+        role: 'cancel',
+      },
+      {
+        text: 'Ok',
+        handler: (value2: any) => {
+          console.log(value2);
+          if(day === 'mon'){
+           this.value0 = value2['col -0'].text + '-' + value2['col -1'].text;
+           this.openingTime.OpeningHours.Monday = this.value0;
+          }if(day === 'tue'){
+            this.value1 = value2['col -0'].text + '-' + value2['col -1'].text;
+            this.openingTime.OpeningHours.Tusday = this.value1;
+          }if(day === 'wed'){
+            this.value2 = value2['col -0'].text + '-' + value2['col -1'].text;
+            this.openingTime.OpeningHours.Wednesday = this.value2;
+          }if(day === 'thu'){
+            this.value3 = value2['col -0'].text + '-' + value2['col -1'].text;
+            this.openingTime.OpeningHours.Thursday = this.value3;
+          }if(day === 'fri'){
+            this.value4 = value2['col -0'].text + '-' + value2['col -1'].text;
+            this.openingTime.OpeningHours.Friday = this.value4;
+          }if(day === 'sat'){
+            this.value5 = value2['col -0'].text + '-' + value2['col -1'].text;
+            this.openingTime.OpeningHours.saturday = this.value5;
+          }if(day === 'sun'){
+            this.value6 = value2['col -0'].text + '-' + value2['col -1'].text;
+            this.openingTime.OpeningHours.Sunday = this.value6;
           }
         }
-      ],
-      columns: this.getcolumns()
-    };
-    let picker = await this.pickercontrl.create(options);
-    picker.present()
+      }
+    ],
+    columns: this.getcolumnsmon()
+  };
+  let picker = await this.pickercontrl.create(options);
+  picker.present()
+}
 
+getcolumnsmon() {
+  let columns = []
+  for (let i = 0; i < this.numColumns; i++) {
+    columns.push({
+      name: `col -${i}`,
+      options: this.getColumnOptionsmon(i)
+    })
   }
+  return columns;
+}
+getColumnOptionsmon(columIndex: number) {
+  let options = []
+  for (let i = 0; i < this.numOptions; i++) {
+    options.push({
+      text: this.timeget[columIndex][i % this.numOptions],
+      value2: i
+    })
+  }
+  return options;
+}
+public next(slides) {
+  console.log(slides);
+  slides.slideNext();
+}
 
-  getcolumns() {
-    let columns = []
-    for (let i = 0; i < this.numColumns; i++) {
-      columns.push({
-        name: `col -${i}`,
-        options: this.getColumnOptions(i)
-      })
-    }
-    return columns;
-  }
-  getColumnOptions(columIndex: number) {
-    let options = []
-    for (let i = 0; i < this.numOptions; i++) {
-      options.push({
-        text: this.timeget[columIndex][i % this.numOptions],
-        value: i
-      })
-    }
-    return options;
-  }
+public prev(slides) {
+  console.log(slides);
+  slides.slidePrev();
+}
+
+// changeLocale(locale){
+//   this.translate.use(locale.detail.value);
+//   console.log(locale);
+// }
+// addStaff(){
+//   this.router.navigate(['/addstaff']);
+// }
 }
